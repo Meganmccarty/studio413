@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        {% for post in posts %}
+            <div class="post">
+                <p class="date">created: {{ post.created_date|date:'d-m-Y' }}</p>
+                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                <p>{{ post.text|truncatechars:200 }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div>
+            <p>You are not authorized to view this page. If you are the author or webmaster, please <a href=""> log in</a></p>
+        </div>
+    {% endif %}
+{% endblock %}
