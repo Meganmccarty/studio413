@@ -56,6 +56,8 @@ ROOT_URLCONF = 'mysite.urls'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
