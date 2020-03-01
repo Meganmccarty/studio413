@@ -92,6 +92,31 @@ body {
     padding-bottom: 10px;
 }
 
+@media all and (max-width: 730px) {
+    body {
+        margin: 5px;
+    }
+    
+    .flex-container-posts, .flex-container-sidebar {
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .main-flex-container {
+        margin: 0;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .flex-card {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+}
+
 /*
 
 DJANGO GIRLS TUTORIAL CSS
