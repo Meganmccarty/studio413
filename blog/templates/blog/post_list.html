@@ -6,9 +6,12 @@
             <div class="date">
                 <p>published: {{ post.published_date }}</p>
             </div>
-        <h2><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h2>
+            <h2><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h2>
             <p>{{ post.text| safe | truncatechars:550 }}</p>
             <a href="{% url 'post_detail' post.slug %}">Comments: {{ post.approved_comments.count }}</a>
+            <br>
+            <br>
+            <a href="{% url 'post_detail' post.slug  %}" class="btn btn-default">Read More &rarr;</a>
         </div>
     {% endfor %}
 {% endblock %}
