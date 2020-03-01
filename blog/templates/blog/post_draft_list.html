@@ -17,4 +17,18 @@
             <p>You are not authorized to view this page. If you are the author or webmaster, please <a href="{% url 'login' %}">log in</a></p>
         </div>
     {% endif %}
+    {% if posts.has_other_pages %}
+        <div class="page-buttons">
+            <nav aria-label="Page navigation conatiner"></nav>
+                <ul class="pagination justify-content-center">
+                    {% if posts.has_previous %}
+                        <li><a href="?page={{ posts.previous_page_number }}" class="page-link">&laquo; Previous </a></li>
+                    {% endif %}
+                    {% if posts.has_next %}
+                        <li><a href="?page={{ posts.next_page_number }}" class="page-link"> Next &raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    {% endif %}
 {% endblock %}
