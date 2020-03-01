@@ -2,30 +2,81 @@
 <html>
     <head>
         <title>Django Girls blog</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+        <meta name="google" content="notranslate" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous" />
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
-        <div class="page-header">
-            {% if user.is_authenticated %}
-                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-                <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
-                <a href="https://djangogirlsblog2.pythonanywhere.com/admin" class="top-menu">Admin</a>
-                <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
-            {% else %}
-                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
-            {% endif %}
-            <h1><a href="/">Django Girls Blog</a></h1>
-        </div>
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" id="mainNav">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Django Girls Blog</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="#">Contact</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item text-black">
+                                <a class="nav-link text-black font-weight-bold" href="{% url 'post_new' %}"><span class="glyphicon glyphicon-plus"></span>New Post</a>
+                            </li>
+                            <li class="nav-item text-black">
+                                <a class="nav-link text-black font-weight-bold" href="{% url 'post_draft_list' %}"><span class="glyphicon glyphicon-edit"></span>Drafts</a>
+                            </li>
+                            <li class="nav-item text-black">
+                                <a class="nav-link text-black font-weight-bold" href="https://djangogirlsblog2.pythonanywhere.com/admin">Admin</a>
+                            </li>
+                            <li class="nav-item text-black">
+                                <a class="nav-link text-black font-weight-bold" href="{% url 'logout' %}">Log out</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item text-black">
+                                <a class="nav-link text-black font-weight-bold" href="{% url 'login' %}">Log in</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <header class="masthead">
+            <div class="overlay"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class=" col-md-8 col-md-10 mx-auto">
+                            <div class="site-heading">
+                                <h3 class=" site-heading my-4 mt-3 text-white"> Welcome to my awesome Blog </h3>
+                                <p class="text-light">We Love Django As much as you do..! &nbsp</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="main-flex-container">
+            <div class="flex-container-posts">
                 {% block content %}
                 {% endblock %}
+            </div>
+            <div class="flex-container-sidebar">
+                <div class="flex-card">
+                    <h5 class="flex-card-header">About Us</h5>
+                    <div class="flex-card-body">
+                        <p class="flex-card-text"> This awesome blog is made on the top of our Favourite full stack Framework 'Django', follow up the tutorial to learn how we made it..!</p>
+                        <a href="/" class="btn btn-primary">Know more!</a>
+                    </div>
                 </div>
             </div>
         </div>
+        <footer class="py-3 bg-grey">
+            <p class="m-0 text-dark text-center">Copyright &copy; 2020 Diane McCarty. All rights reserved.</p>
+            <br>
+            <p class="m-0 text-muted text-center small">Website created by Megan McCarty</p>
+        </footer>
     </body>
 </html>

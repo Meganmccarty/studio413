@@ -2,16 +2,13 @@
 
 {% block content %}
     {% for post in posts %}
-        <div class="post">
-            <div class="date">
-                <p>published: {{ post.published_date }}</p>
+        <div class="flex-card-post">
+            <h3 class="flex-card-header">{{ post.title }}</h3>
+            <div class="flex-card-body">
+                <p class="text-muted small">By {{ post.author }} | Published {{ post.published_date}} </p>
+                <p class="flex-card-text">{{post.text | slice:":550" | safe}}</p>
+                <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
             </div>
-            <h2><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h2>
-            <p>{{ post.text| safe | truncatechars:550 }}</p>
-            <a href="{% url 'post_detail' post.slug %}">Comments: {{ post.approved_comments.count }}</a>
-            <br>
-            <br>
-            <a href="{% url 'post_detail' post.slug  %}" class="btn btn-default">Read More &rarr;</a>
-        </div>
+        </div>                
     {% endfor %}
 {% endblock %}

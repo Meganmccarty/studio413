@@ -3,18 +3,18 @@
 {% block content %}
     {% if user.is_authenticated %}
         {% for post in posts %}
-            <div class="post">
-                <p class="date">created: {{ post.created_date|date:'d-m-Y' }}</p>
-                <h2><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h1>
-                <p>{{ post.text| safe | truncatechars:550 }}</p>
-                <br>
-                <br>
-                <a href="{% url 'post_detail' post.slug  %}" class="btn btn-default">Read More &rarr;</a>
-            </div>
+            <div class="flex-card-post">
+                <h3 class="flex-card-header">{{ post.title }}</h3>
+                <div class="flex-card-body">
+                    <p class="text-muted small">By {{ post.author }} | Created {{ post.created_date}} </p>
+                    <p class="flex-card-text">{{post.text | slice:":550" | safe}}</p>
+                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+                </div>
+            </div>                
         {% endfor %}
     {% else %}
         <div>
-            <p>You are not authorized to view this page. If you are the author or webmaster, please <a href=""> log in</a></p>
+            <p>You are not authorized to view this page. If you are the author or webmaster, please <a href="{% url 'login' %}">log in</a></p>
         </div>
     {% endif %}
 {% endblock %}
