@@ -6,26 +6,24 @@ from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
-def about(request):
-    return render(request, 'blog/about.html')
+### These views are public (do NOT require admin log in) --->
 
+### Home Page (Post List)
 def post_list(request):
-    post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    paginator = Paginator(post_list, 3)
+    post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    paginator = Paginator(post_list, 10)
     
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
         posts = paginator.page(1)
     except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
         posts = paginator.page(paginator.num_pages)
 
     return render(request, 'blog/post_list.html', {'post_list': post_list, 'page' : page, 'posts' : posts })
-    #return render(request, 'blog/post_list.html', {'posts': posts, 'page': page, 'post_list': post_list})
 
+### Detailed Post
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(approved_comment=True)
@@ -40,6 +38,13 @@ def post_detail(request, slug):
         comment_form = CommentForm()
     return render(request, 'blog/post_detail.html', {'post': post, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form})
 
+### About Page
+def about(request):
+    return render(request, 'blog/about.html')
+
+### These views are private (REQUIRE admin log in) --->
+
+### New Post
 @login_required
 def post_new(request):
     if request.method == "POST":
@@ -53,6 +58,7 @@ def post_new(request):
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
 
+### Edit Post
 @login_required
 def post_edit(request, slug):
     post = get_object_or_404(Post, slug=slug)
@@ -67,6 +73,7 @@ def post_edit(request, slug):
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
 
+### Drafts List Page
 @login_required
 def post_draft_list(request):
     post_list = Post.objects.filter(published_date__isnull=True).order_by('created_date')
@@ -76,21 +83,21 @@ def post_draft_list(request):
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
         posts = paginator.page(1)
     except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
         posts = paginator.page(paginator.num_pages)
 
     return render(request, 'blog/post_list.html', {'post_list': post_list, 'page' : page, 'posts' : posts })
     return render(request, 'blog/post_draft_list.html', {'posts': posts})
 
+### Publish Draft Post
 @login_required
 def post_publish(request, slug):
     post = get_object_or_404(Post, slug=slug)
     post.publish()
     return redirect('post_detail', slug=slug)
 
+### Delete Post
 @login_required
 def post_remove(request, slug):
     post = get_object_or_404(Post, slug=slug)
