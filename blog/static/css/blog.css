@@ -4,6 +4,10 @@ body {
     background-color: #fdfdfd;
 }
 
+nav {
+    font-family: 'Simonetta';
+}
+
 .main-flex-container {
     display: flex;
     flex-direction: row;
@@ -40,6 +44,8 @@ body {
 }
 
 .masthead {
+    font-family: 'Simonetta';
+    /*font-family: 'Leckerli One';*/
     background: #3398E1;
     height: auto;
     padding-bottom: 15px;
@@ -67,6 +73,8 @@ body {
 }
 
 .flex-card-header {
+    font-family: 'Simonetta';
+    /*font-family: 'Leckerli One';*/
     background: rgb(237,237,237);
     border-radius: 5px 5px 0px 0px;
     border-bottom: 1px solid rgb(200,200,200);
@@ -75,6 +83,7 @@ body {
 
 .flex-card-body {
     padding: 15px;
+    font-family: 'Simonetta';
 }
   
 .flex-card:hover, .flex-card-post:hover {
@@ -89,7 +98,12 @@ body {
 }
 
 .page-buttons {
+    font-family: 'Simonetta';
     margin: 15px;
+}
+
+footer {
+    font-family: 'Simonetta';
 }
 
 @media all and (max-width: 730px) {

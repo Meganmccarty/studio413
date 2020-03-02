@@ -3,6 +3,7 @@
     <head>
         <title>Django Girls blog</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Leckerli+One|Simonetta&display=swap" rel="stylesheet">
         <meta name="google" content="notranslate" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -10,6 +11,7 @@
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
+        {% if user.is_authenticated %}
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" id="mainNav">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">Django Girls Blog</a>
@@ -20,37 +22,29 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="#">Contact</a>
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'post_new' %}"><span class="glyphicon glyphicon-plus"></span>New Post</a>
                         </li>
-                        {% if user.is_authenticated %}
-                            <li class="nav-item text-black">
-                                <a class="nav-link text-black font-weight-bold" href="{% url 'post_new' %}"><span class="glyphicon glyphicon-plus"></span>New Post</a>
-                            </li>
-                            <li class="nav-item text-black">
-                                <a class="nav-link text-black font-weight-bold" href="{% url 'post_draft_list' %}"><span class="glyphicon glyphicon-edit"></span>Drafts</a>
-                            </li>
-                            <li class="nav-item text-black">
-                                <a class="nav-link text-black font-weight-bold" href="https://djangogirlsblog2.pythonanywhere.com/admin">Admin</a>
-                            </li>
-                            <li class="nav-item text-black">
-                                <a class="nav-link text-black font-weight-bold" href="{% url 'logout' %}">Log out</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item text-black">
-                                <a class="nav-link text-black font-weight-bold" href="{% url 'login' %}">Log in</a>
-                            </li>
-                        {% endif %}
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'post_draft_list' %}"><span class="glyphicon glyphicon-edit"></span>Drafts</a>
+                        </li>
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="https://djangogirlsblog2.pythonanywhere.com/admin">Admin</a>
+                        </li>
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'logout' %}">Log out</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
+        {% endif %}
         <header class="masthead">
             <div class="overlay"></div>
                 <div class="container">
                     <div class="row">
                         <div class=" col-md-8 col-md-10 mx-auto">
                             <div class="site-heading">
-                                <h3 class=" site-heading my-4 mt-3 text-white"> Welcome to my awesome Blog </h3>
+                                <a href="/"><h3 class="site-heading my-4 mt-3 text-white">Welcome to my awesome Blog</h3></a>
                                 <p class="text-light">We Love Django As much as you do..! &nbsp</p>
                             </div>
                         </div>
@@ -95,6 +89,11 @@
         <footer class="py-3 bg-grey">
             <p class="m-0 text-dark text-center">Copyright &copy; 2020 Diane McCarty. All rights reserved.</p>
             <br>
+            {% if user.is_authenticated %}
+            {% else %}
+                <p class="m-0 text-muted text-center small">Admin: <a href="{% url 'login' %}">Log in</a></p>
+                <br>
+            {% endif %}
             <p class="m-0 text-muted text-center small">Website created by Megan McCarty</p>
         </footer>
     </body>
