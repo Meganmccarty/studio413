@@ -6,6 +6,9 @@ from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
+def about(request):
+    return render(request, 'blog/about.html')
+
 def post_list(request):
     post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     paginator = Paginator(post_list, 3)
