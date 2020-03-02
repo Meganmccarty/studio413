@@ -1,11 +1,24 @@
+/*---------- Basic CSS Stuff ----------*/
+
+* {
+    font-family: 'Simonetta';
+}
+
 body {
-    font-family: "Roboto", sans-serif;
     font-size: 17px;
     background-color: #fdfdfd;
 }
 
-nav {
-    font-family: 'Simonetta';
+/*---------- Blog Header ----------*/
+
+header {
+    background-image: url("../../../media/background3.jpeg");
+    background-repeat: no-repeat;
+    background-size: 2500px 963px;
+    height: auto;
+    padding-bottom: 15px;
+    box-shadow: 0 16px 48px #E3E7EB;
+    padding-top: 10px;
 }
 
 .flex-header {
@@ -26,6 +39,8 @@ nav {
     width: auto;
 }
 
+/*---------- About Me Image ----------*/
+
 .about-me-img {
     display: flex;
     flex-direction: row;
@@ -38,6 +53,8 @@ nav {
     border-radius: 100px;
 }
 
+/*---------- Main Flex Container ----------*/
+
 .main-flex-container {
     display: flex;
     flex-direction: row;
@@ -49,6 +66,8 @@ nav {
     margin-left: 10px;
     margin-right: 10px;
 }
+
+/*---------- Flex Containers for Posts and Sidebar ---------- */
 
 .flex-container-posts, .flex-container-sidebar {
     display: flex;
@@ -65,34 +84,7 @@ nav {
     margin-right: 0;
 }
 
-.head_text {
-    color: white;
-}
-
-.shadow {
-    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
-}
-
-header {
-    font-family: 'Simonetta';
-    /*font-family: 'Leckerli One';*/
-    background-image: url("../../../media/background3.jpeg");
-    /*background-color: #3398E1;*/
-    background-repeat: no-repeat;
-    background-size: 2500px 963px;
-    height: auto;
-    padding-bottom: 15px;
-    box-shadow: 0 16px 48px #E3E7EB;
-    padding-top: 10px;
-}
-
-.flex-card {
-    margin: 10px;
-    width: 90%;
-    box-shadow: 0 16px 48px #E3E7EB;
-    border: 1px solid rgb(200,200,200);
-    border-radius: 5px;
-}
+/*---------- Flex Cards for Posts ----------*/
 
 .flex-card-post {
     margin-top: 10px;
@@ -103,9 +95,28 @@ header {
     border-radius: 5px;
 }
 
+/*---------- Flex Cards for Sidebar Items ----------*/
+
+.flex-card {
+    margin: 10px;
+    width: 90%;
+    box-shadow: 0 16px 48px #E3E7EB;
+    border: 1px solid rgb(200,200,200);
+    border-radius: 5px;
+}
+
+/*---------- Flex Card for Comments ----------*/
+
+.flex-comments {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0;
+    padding-bottom: 10px;
+}
+
+/*---------- Flex Card Header and Body ---------- */
+
 .flex-card-header {
-    font-family: 'Simonetta';
-    /*font-family: 'Leckerli One';*/
     background: rgb(237,237,237);
     border-radius: 5px 5px 0px 0px;
     border-bottom: 1px solid rgb(200,200,200);
@@ -121,56 +132,13 @@ header {
     box-shadow: 0 6px 10px 0 rgb(190,190,190);
 }
 
-.flex-comments {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 0;
-    padding-bottom: 10px;
-}
+/*---------- Pagination Buttons ----------*/
 
 .page-buttons {
-    font-family: 'Simonetta';
     margin: 15px;
 }
 
-footer {
-    font-family: 'Simonetta';
-}
-
-@media all and (max-width: 730px) {
-    body {
-        margin: 5px;
-    }
-
-    .flex-container-posts, .flex-container-sidebar {
-        width: 100%;
-        justify-content: center;
-        margin: 0;
-    }
-
-    .main-flex-container {
-        margin: 0;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .flex-card {
-        width: 100%;
-        margin-top: 20px;
-        margin-bottom: 0;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .about-me-img img {
-        max-width: 350px;
-        border-radius: 175px;
-    }
-
-    .flex-header {
-        justify-content: center;
-    }
-}
+/*---------- Media Queries ----------*/
 
 @media all and (max-width: 1935px) {
     header {
@@ -225,6 +193,41 @@ footer {
     header {
         background-image: url("../../../media/background2.jpeg");
         background-size: 800px 480px;
+    }
+}
+
+@media all and (max-width: 730px) {
+    body {
+        margin: 5px;
+    }
+
+    .flex-container-posts, .flex-container-sidebar {
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .main-flex-container {
+        margin: 0;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .flex-card {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .about-me-img img {
+        max-width: 350px;
+        border-radius: 175px;
+    }
+
+    .flex-header {
+        justify-content: center;
     }
 }
 
