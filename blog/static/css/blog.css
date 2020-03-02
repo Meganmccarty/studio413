@@ -157,4 +157,9 @@ footer {
         margin-left: 0;
         margin-right: 0;
     }
+
+    .about-me-img img {
+        max-width: 350px;
+        border-radius: 175px;
+    }
 }
