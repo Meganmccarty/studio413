@@ -11,12 +11,19 @@ nav {
 .flex-header {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 215px;
 }
 
 .img-box {
-    box-shadow: 0 0 10px 10px white;   
+    box-shadow: 0 0 10px 10px white; 
+    height: 100px; 
+}
+
+.img-box img {
+    height: 100px;
+    width: auto;
 }
 
 .about-me-img {
@@ -69,17 +76,14 @@ nav {
 header {
     font-family: 'Simonetta';
     /*font-family: 'Leckerli One';*/
-    background-image: url("../../../media/background.jpg");
-    background-color: #3398E1;
+    background-image: url("../../../media/background3.jpeg");
+    /*background-color: #3398E1;*/
     background-repeat: no-repeat;
+    background-size: 2500px 963px;
     height: auto;
     padding-bottom: 15px;
     box-shadow: 0 16px 48px #E3E7EB;
     padding-top: 10px;
-}
-
-img {
-    margin: 0 auto;
 }
 
 .flex-card {
@@ -161,5 +165,100 @@ footer {
     .about-me-img img {
         max-width: 350px;
         border-radius: 175px;
+    }
+
+    .flex-header {
+        justify-content: center;
+    }
+}
+
+@media all and (max-width: 1935px) {
+    header {
+        background-image: url("../../../media/background3.jpeg");
+        background-size: 1890px 729px;
+    }
+}
+
+@media all and (max-width: 1800px) {
+    header {
+        background-image: url("../../../media/background3.jpeg");
+        background-size: 1785px 688px;
+    }
+}
+
+@media all and (max-width: 1700px) {
+    header {
+        background-image: url("../../../media/background2.jpeg");
+        background-size: 1690px 1012px;
+    }
+}
+
+@media all and (max-width: 1500px) {
+    header {
+        background-image: url("../../../media/background2.jpeg");
+        background-size: 1500px 899px;
+    }
+}
+
+@media all and (max-width: 1300px) {
+    header {
+        background-image: url("../../../media/background2.jpeg");
+        background-size: 1300px 779px;
+    }
+}
+
+@media all and (max-width: 1120px) {
+    header {
+        background-image: url("../../../media/background2.jpeg");
+        background-size: 1120px 671px;
+    }
+}
+
+@media all and (max-width: 950px) {
+    header {
+        background-image: url("../../../media/background2.jpeg");
+        background-size: 950px 570px;
+    }
+}
+
+@media all and (max-width: 800px) {
+    header {
+        background-image: url("../../../media/background2.jpeg");
+        background-size: 800px 480px;
+    }
+}
+
+@media all and (max-width: 700px) {
+    header {
+        background-image: url("../../../media/background2.jpeg");
+        background-size: 700px 420px;
+    }
+}
+
+@media all and (max-width: 600px) {
+    header {
+        background-image: url("../../../media/background2.jpeg");
+        background-size: 600px 360px;
+    }
+}
+
+@media all and (max-width: 500px) {
+    header {
+        background-image: url("../../../media/background2.jpeg");
+        background-size: 500px 300px;
+    }
+}
+
+@media all and (max-width: 420px) {
+    header {
+        background-image: url("../../../media/background2.jpeg");
+        background-size: 420px 260px;
+    }
+}
+
+@media all and (max-width: 360px) {
+    header {
+        background-image: url("../../../media/background2.jpeg");
+        background-size: 360px 215px;
     }
 }
