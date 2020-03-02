@@ -56,7 +56,6 @@ nav {
 .flex-card {
     margin: 10px;
     width: 90%;
-    max-width: 450px;
     box-shadow: 0 16px 48px #E3E7EB;
     border: 1px solid rgb(200,200,200);
     border-radius: 5px;
@@ -66,7 +65,6 @@ nav {
     margin-top: 10px;
     margin-right: 5px;
     width: 100%;
-    max-width: 800px;
     box-shadow: 0 16px 48px #E3E7EB;
     border: 1px solid rgb(200,200,200);
     border-radius: 5px;
@@ -85,7 +83,7 @@ nav {
     padding: 15px;
     font-family: 'Simonetta';
 }
-  
+
 .flex-card:hover, .flex-card-post:hover {
     box-shadow: 0 6px 10px 0 rgb(190,190,190);
 }
@@ -110,7 +108,7 @@ footer {
     body {
         margin: 5px;
     }
-    
+
     .flex-container-posts, .flex-container-sidebar {
         width: 100%;
         justify-content: center;
