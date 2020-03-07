@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
+        <div id="fb-root"></div>
         {% if user.is_authenticated %}
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" id="mainNav">
             <div class="container-fluid">
@@ -83,7 +84,7 @@
                 <div class="flex-card">
                     <h5 class="flex-card-header">Facebook Group</h5>
                     <div class="flex-card-body">
-                        <div class="GroupPlugin_contentContainer" id="GroupPluginContainer_b81dea59e984e9d8e8e74e56274c8a59" group-id="322580975338340" num="10" showComments="Y" showPagination="Y" source="plugin"></div>
+                        <div class="fb-group" data-href="https://www.facebook.com/groups/322580975338340/" data-width="280" data-show-social-context="true" data-show-metadata="true"></div>
                     </div>
                 </div>
                 <div class="flex-card">
@@ -113,4 +114,5 @@
     </body>
     <script id="GroupPluginJS" token="6b5a24ce595c163ac0e55bbbec505816" type="text/javascript" src="https://www.GroupPlugin.com/public/group-plugin.min.js"></script>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=815653788912434&autoLogAppEvents=1"></script>
 </html>
