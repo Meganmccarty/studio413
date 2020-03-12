@@ -7,7 +7,7 @@
             <div class="flex-card-body">
                 <p class="text-muted small">By {{ post.author }} | Published {{ post.published_date}} </p>
                 <p class="flex-card-text">{{post.text | truncatewords_html:75 | safe}}</p>
-                <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+                <a href="{% url 'post_detail' post.slug %}"><button class="styled-button">Read More &rarr;</button></a>
             </div>
         </div>                
     {% endfor %}

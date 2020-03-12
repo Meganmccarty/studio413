@@ -1,7 +1,7 @@
 /*---------- Basic CSS Stuff ----------*/
 
 * {
-    font-family: 'Simonetta';
+    font-family: 'Simonetta' !important;
 }
 
 body {
@@ -116,7 +116,7 @@ header {
 /*---------- Flex Card Header and Body ---------- */
 
 .flex-card-header {
-    background: rgb(237,237,237);
+    background: rgb(193, 222, 227);
     border-radius: 5px 5px 0px 0px;
     border-bottom: 1px solid rgb(200,200,200);
     padding: 15px;
@@ -135,6 +135,18 @@ header {
 
 .page-buttons {
     margin: 15px;
+}
+
+.styled-button {
+    padding: 10px;
+    border-radius: 7px 7px 7px 7px;
+    font-size: 15px;
+    background: rgb(0,40,110);
+    color: rgb(255,255,255);
+}
+
+.styled-button:hover {
+    background: rgb(0,20,75);
 }
 
 /*---------- Media Queries ----------*/

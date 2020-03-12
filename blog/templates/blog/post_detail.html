@@ -8,8 +8,8 @@
             <h3 class="flex-card-header">{{ post.title }}</h3>
             <div class="flex-card-body">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'post_edit' post.slug %}"><button class="btn btn-primary">Edit Post</button></a>
-                    <a href="{% url 'post_remove' post.slug %}"><button class="btn btn-primary">Delete Post</button></a>
+                    <a href="{% url 'post_edit' post.slug %}"><button class="styled-button">Edit Post</button></a>
+                    <a href="{% url 'post_remove' post.slug %}"><button class="styled-button">Delete Post</button></a>
                 {% endif %}
                 <p class="text-muted">By {{ post.author }} | Published {{ post.published_date }}</p>
                 <p>{{ post.text| safe }}</p>
@@ -43,7 +43,7 @@
                 <form method="post" style="margin-top: 1.3em;">
                     {{ comment_form | crispy }}
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="styled-button">Submit</button>
                 </form>
                 {% endif %}
             </div>
@@ -54,9 +54,9 @@
             <div class="flex-card-post">
                 <h3 class="flex-card-header">{{ post.title }}</h3>
                 <div class="flex-card-body">
-                    <a href="{% url 'post_publish' post.slug %}"><button class="btn btn-primary">Publish</button></a>
-                    <a href="{% url 'post_edit' post.slug %}"><button class="btn btn-primary">Edit Post</button></a>
-                    <a href="{% url 'post_remove' post.slug %}"><button class="btn btn-primary">Delete Post</button></a>
+                    <a href="{% url 'post_publish' post.slug %}"><button class="styled-button">Publish</button></a>
+                    <a href="{% url 'post_edit' post.slug %}"><button class="styled-button">Edit Post</button></a>
+                    <a href="{% url 'post_remove' post.slug %}"><button class="styled-button">Delete Post</button></a>
                     <p class="text-muted">By {{ post.author }} | Published {{ post.published_date }}</p>
                     <p>{{ post.text| safe }}</p>
                 </div>
