@@ -12,8 +12,8 @@ body {
 /*---------- Blog Header ----------*/
 
 header {
-    height: 275px;
-    background-image: url('../../../media/header4.jpg');
+    height: 200px;
+    background-image: url('../../../media/header5.jpg');
     background-repeat: no-repeat;
     padding-bottom: 15px;
     box-shadow: 0 16px 48px #E3E7EB;
@@ -25,16 +25,16 @@ header {
     flex-direction: row;
     justify-content: flex-end;
     align-items: flex-end;
-    height: 265px;
+    height: 190px;
 }
 
 .logo {
     box-shadow: 0 0 10px 10px white; 
-    height: 125px; 
+    height: 110px; 
 }
 
 .logo img {
-    height: 125px;
+    height: 110px;
     width: auto;
 }
 
