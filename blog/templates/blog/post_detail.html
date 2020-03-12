@@ -2,52 +2,72 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<div class="flex-card-post">
-    <h3 class="flex-card-header">{{ post.title }}</h3>
-    <div class="flex-card-body">
-        {% if post.published_date %}
-        {% else %}
-            <a href="{% url 'post_publish' post.slug %}"><button class="btn btn-primary">Publish</button></a>
-        {% endif %}
+    {% if post.published_date %}
+        <!--Code for viewing a published post (with ability for admin to edit/delete)-->
+        <div class="flex-card-post">
+            <h3 class="flex-card-header">{{ post.title }}</h3>
+            <div class="flex-card-body">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'post_edit' post.slug %}"><button class="btn btn-primary">Edit Post</button></a>
+                    <a href="{% url 'post_remove' post.slug %}"><button class="btn btn-primary">Delete Post</button></a>
+                {% endif %}
+                <p class="text-muted">By {{ post.author }} | Published {{ post.published_date }}</p>
+                <p>{{ post.text| safe }}</p>
+            </div>
+        </div>
+        <div class="flex-card-post">
+            <h3 class="flex-card-header">Comments: {{ comments.count }}</h3>
+            <div class="flex-card-body">
+                {% for comment in comments %}
+                    <div class="flex-comments">
+                        <p class="font-weight-bold">
+                        <hr>
+                        {{ comment.name }}
+                            <span class=" text-muted font-weight-normal">
+                                {{ comment.created_date }}
+                            </span>
+                        </p>
+                        {{ comment.text | linebreaks }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="flex-card-post">
+            <h3 class="flex-card-header">Leave a comment</h3>
+            <div class="flex-card-body">
+                {% if new_comment %}
+                    <div class="alert alert-success" role="alert">
+                        Your comment is awaiting moderation
+                    </div>
+                {% else %}
+                <form method="post" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        <!--Code for viewing an unpublished (draft) post as an admin only, with ability to publish (and no ability to leave a comment, because why?)-->
         {% if user.is_authenticated %}
-            <a href="{% url 'post_edit' post.slug %}"><button class="btn btn-primary">Edit Post</button></a>
-            <a href="{% url 'post_remove' post.slug %}"><button class="btn btn-primary">Delete Post</button></a>
-        {% endif %}
-        <p class="text-muted">By {{ post.author }} | Published {{ post.published_date }}</p>
-        <p>{{ post.text| safe }}</p>
-    </div>
-</div>
-<div class="flex-card-post">
-    <h3 class="flex-card-header">Comments: {{ comments.count }}</h3>
-    <div class="flex-card-body">
-        {% for comment in comments %}
-            <div class="flex-comments">
-                <p class="font-weight-bold">
-                <hr>
-                {{ comment.name }}
-                    <span class=" text-muted font-weight-normal">
-                        {{ comment.created_date }}
-                    </span>
-                </p>
-                {{ comment.text | linebreaks }}
-            </div>
-        {% endfor %}
-    </div>
-</div>
-<div class="flex-card-post">
-    <h3 class="flex-card-header">Leave a comment</h3>
-    <div class="flex-card-body">
-        {% if new_comment %}
-            <div class="alert alert-success" role="alert">
-                Your comment is awaiting moderation
+            <div class="flex-card-post">
+                <h3 class="flex-card-header">{{ post.title }}</h3>
+                <div class="flex-card-body">
+                    <a href="{% url 'post_publish' post.slug %}"><button class="btn btn-primary">Publish</button></a>
+                    <a href="{% url 'post_edit' post.slug %}"><button class="btn btn-primary">Edit Post</button></a>
+                    <a href="{% url 'post_remove' post.slug %}"><button class="btn btn-primary">Delete Post</button></a>
+                    <p class="text-muted">By {{ post.author }} | Published {{ post.published_date }}</p>
+                    <p>{{ post.text| safe }}</p>
+                </div>
             </div>
         {% else %}
-        <form method="post" style="margin-top: 1.3em;">
-            {{ comment_form | crispy }}
-            {% csrf_token %}
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+            <div class="flex-card-post">
+                <h3 class="flex-card-header">Error</h3>
+                <div class="flex-card-body">
+                    <p>You are not authorized to view this page. If you are the author or webmaster, please <a href="{% url 'login' %}">log in</a></p>
+                </div>
+            </div>
         {% endif %}
-    </div>
-</div>
+    {% endif %}
 {% endblock %}
