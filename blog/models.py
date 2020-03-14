@@ -8,7 +8,7 @@ from sendgrid.helpers.mail import Mail
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    slug = models.SlugField(default='', null=True, blank=True)
+    slug = models.SlugField(null=True, blank=True)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
@@ -16,7 +16,7 @@ class Post(models.Model):
     def publish(self):
         self.published_date = timezone.now()
         self.save()
-    
+
     def approved_comments(self):
         return self.comments.filter(approved_comment=True)
 
@@ -32,7 +32,7 @@ class Comment(models.Model):
     post = models.ForeignKey('blog.Post', on_delete=models.CASCADE, related_name='comments')
     author = models.CharField(max_length=200)
     name = models.CharField(max_length=200)
-    email = models.EmailField(default='')
+    email = models.EmailField()
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     approved_comment = models.BooleanField(default=False)
@@ -45,8 +45,8 @@ class Comment(models.Model):
         return self.text
 
 class Subscriber(models.Model):
-    first_name = models.CharField(max_length=100, default='')
-    last_name = models.CharField(max_length=100, default='')
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     conf_num = models.CharField(max_length=15)
     confirmed = models.BooleanField(default=False)
@@ -62,7 +62,7 @@ class Newsletter(models.Model):
 
     def __str__(self):
         return self.subject + " " + self.created_at.strftime("%B %d, %Y")
-    
+
     def send(self, request):
         contents = self.contents.read().decode('utf-8')
         subscribers = Subscriber.objects.filter(confirmed=True)

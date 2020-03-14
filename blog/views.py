@@ -75,7 +75,7 @@ def new(request):
                 confirm your registration</a>.'.format(request.build_absolute_uri('/confirm/'),
                                                     sub.email,
                                                     sub.conf_num))
-        sg = SendGridAPIClient('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')
+        sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
         response = sg.send(message)
         return render(request, 'blog/new_subscriber.html', {'email': sub.email, 'action': 'added', 'form': SubscriberForm()})
     else:
