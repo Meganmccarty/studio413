@@ -5,6 +5,7 @@ urlpatterns = [
     path('', views.post_list, name='post_list'),
     path('new-subscriber/', views.new, name='new'),
     path('confirm/', views.confirm, name='confirm'),
+    path('delete/', views.delete, name='delete'),
     path('about/', views.about, name='about'),
     path('products/', views.products, name='products'),
     path('post/new/', views.post_new, name='post_new'),
