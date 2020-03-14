@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
 FROM_EMAIL = 'megan_mccarty@hotmail.com' # replace with your address
-SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 
 # Application definition
 
@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'crispy_forms',
     'django_summernote',
-    'sendgrid',
 ]
 
 MIDDLEWARE = [

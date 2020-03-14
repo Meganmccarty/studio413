@@ -3,10 +3,10 @@ from django.utils import timezone
 from .models import Post, Comment, Subscriber
 from .forms import PostForm, CommentForm, SubscriberForm
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse
 from django.conf import settings
-from django.views.decorators.csrf import csrf_exempt
 import random
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
@@ -14,13 +14,10 @@ from sendgrid.helpers.mail import Mail
 ### These views are public (do NOT require admin log in) --->
 
 ### Home Page (Post List)
-def random_digits():
-    return "%0.12d" % random.randint(0, 999999999999)
-
 def post_list(request):
     post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     paginator = Paginator(post_list, 10)
-    
+
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
@@ -28,7 +25,7 @@ def post_list(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
-    
+
     return render(request, 'blog/post_list.html', {'post_list': post_list, 'page' : page, 'posts' : posts })
 
 ### Detailed Post
@@ -75,7 +72,7 @@ def new(request):
                 confirm your registration</a>.'.format(request.build_absolute_uri('/confirm/'),
                                                     sub.email,
                                                     sub.conf_num))
-        sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
+        sg = SendGridAPIClient('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')
         response = sg.send(message)
         return render(request, 'blog/base.html', {'email': sub.email, 'action': 'added', 'form': SubscriberForm()})
     else:
@@ -117,7 +114,7 @@ def post_edit(request, slug):
 def post_draft_list(request):
     post_list = Post.objects.filter(published_date__isnull=True).order_by('created_date')
     paginator = Paginator(post_list, 3)
-    
+
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
