@@ -2,6 +2,8 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -60,3 +62,19 @@ class Newsletter(models.Model):
 
     def __str__(self):
         return self.subject + " " + self.created_at.strftime("%B %d, %Y")
+    
+    def send(self, request):
+        contents = self.contents.read().decode('utf-8')
+        subscribers = Subscriber.objects.filter(confirmed=True)
+        sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
+        for sub in subscribers:
+            message = Mail(
+                    from_email=settings.FROM_EMAIL,
+                    to_emails=sub.email,
+                    subject=self.subject,
+                    html_content=contents + (
+                        '<br><a href="{}/delete/?email={}&conf_num={}">Unsubscribe</a>.').format(
+                            request.build_absolute_uri('/delete/'),
+                            sub.email,
+                            sub.conf_num))
+            sg.send(message)

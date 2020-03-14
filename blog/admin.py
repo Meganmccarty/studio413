@@ -26,9 +26,17 @@ class SubscriberAdmin(admin.ModelAdmin):
     list_display = ('email', 'first_name', 'last_name', 'confirmed')
     fields = ('email', 'first_name', 'last_name', 'conf_num', 'confirmed')
 
+def send_newsletter(modeladmin, request, queryset):
+    for newsletter in queryset:
+        newsletter.send(request)
+
+send_newsletter.short_description = "Send selected Newsletters to all subscribers"
+
 @admin.register(Newsletter)
-class PostAdmin(SummernoteModelAdmin):
+class NewsletterAdmin(SummernoteModelAdmin):
     list_display = ('subject', 'created_at', 'updated_at')
     search_fields = ['subject', 'contents']
     fields = ('subject', 'contents', 'created_at', 'updated_at')
     summernote_fields = ('contents')
+    actions = [send_newsletter]
+    
