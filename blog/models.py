@@ -43,6 +43,8 @@ class Comment(models.Model):
         return self.text
 
 class Subscriber(models.Model):
+    first_name = models.CharField(max_length=100, default='')
+    last_name = models.CharField(max_length=100, default='')
     email = models.EmailField(unique=True)
     conf_num = models.CharField(max_length=15)
     confirmed = models.BooleanField(default=False)

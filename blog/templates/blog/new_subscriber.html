@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<div class="flex-card-post">
+    <h2 class="flex-card-header">Sign up for the Studio413 Newsletter!</h2>
+    <div class="flex-card-body">
+        {% if email %}
+            <p>Success! Your email, {{ email }}, has been {{ action }} to the mailing list!</p>
+            <p>Look for a confirmation email in your inbox.</p>
+        {% else %}
+            {% if form %}
+                <p>Please enter your information below.</p>
+                <form method="post" novalidate>
+                    {{ form }}
+                    {% csrf_token %}
+                    <br>
+                    <button type="submit" class="styled-button">Subscribe!</button>
+                </form>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

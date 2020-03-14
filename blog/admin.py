@@ -21,4 +21,7 @@ class CommentAdmin(admin.ModelAdmin):
     def approve_comments(self, request, queryset):
         queryset.update(approve_comment=True)
 
-admin.site.register(Subscriber)
+@admin.register(Subscriber)
+class SubscriberAdmin(admin.ModelAdmin):
+    list_display = ('email', 'first_name', 'last_name', 'confirmed')
+    fields = ('email', 'first_name', 'last_name', 'conf_num', 'confirmed')

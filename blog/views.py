@@ -60,23 +60,35 @@ def random_digits():
 @csrf_exempt
 def new(request):
     if request.method == 'POST':
-        sub = Subscriber(email=request.POST['email'], conf_num=random_digits())
+        sub = Subscriber(first_name=request.POST['first_name'],
+                            last_name=request.POST['last_name'],
+                            email=request.POST['email'],
+                            conf_num=random_digits())
         sub.save()
         message = Mail(
             from_email=settings.FROM_EMAIL,
             to_emails=sub.email,
-            subject='Newsletter Confirmation',
-            html_content='Thank you for signing up for my email newsletter! \
-                Please complete the process by \
-                <a href="{}/confirm/?email={}&conf_num={}"> clicking here to \
+            subject='Welcome to the Studio413 Newsletter!',
+            html_content='Thank you for signing up for the Studio413 newsletter! \
+                Before you can receive your exclusive member goodies, please \
+                <a href="{}/confirm/?email={}&conf_num={}"> click here to \
                 confirm your registration</a>.'.format(request.build_absolute_uri('/confirm/'),
                                                     sub.email,
                                                     sub.conf_num))
         sg = SendGridAPIClient('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')
         response = sg.send(message)
-        return render(request, 'blog/base.html', {'email': sub.email, 'action': 'added', 'form': SubscriberForm()})
+        return render(request, 'blog/new_subscriber.html', {'email': sub.email, 'action': 'added', 'form': SubscriberForm()})
     else:
-        return render(request, 'blog/base.html', {'form': SubscriberForm()})
+        return render(request, 'blog/new_subscriber.html', {'form': SubscriberForm()})
+
+def confirm(request):
+    sub = Subscriber.objects.get(email=request.GET['email'])
+    if sub.conf_num == request.GET['conf_num']:
+        sub.confirmed = True
+        sub.save()
+        return render(request, 'blog/new_subscriber.html', {'email': sub.email, 'action': 'confirmed'})
+    else:
+        return render(request, 'blog/new_subscriber.html', {'email': sub.email, 'action': 'denied'})
 
 ### These views are private (REQUIRE admin log in) --->
 

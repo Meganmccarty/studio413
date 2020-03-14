@@ -76,21 +76,8 @@
                 <div class="flex-card">
                     <h5 class="flex-card-header">Studio413 Email Newsletter!</h5>
                     <div class="flex-card-body">
-                        <div>
-                            {% if email %}
-                                <p>{{ email }} has been {{ action }}.</p>
-                            {% endif %}
-                        </div>
-                        {% if form %}
-                            <div>
-                                <form method="post" novalidate>
-                                    {% csrf_token %}
-                                    {{ form }}
-                                    <br>
-                                    <button type="submit" class="styled-button">Subscribe!</button>
-                                </form>
-                            </div>
-                        {% endif %}
+                        <p>Want to receive exclusive member deals and content? Subscribe to the Studio413 Newsletter!</p>
+                        <a href="{% url 'new' %}"><button class="styled-button">Sign me now!</button></a>
                     </div>
                 </div>
                 <!--This is the Sample Video Card. Once we have a video, put it here and uncomment this card.-->

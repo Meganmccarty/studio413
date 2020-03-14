@@ -1,7 +1,7 @@
 from django import forms
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 
-from .models import Post, Comment
+from .models import Post, Comment, Subscriber
 
 class PostForm(forms.ModelForm):
     text = forms.CharField(widget=SummernoteWidget())
@@ -16,4 +16,6 @@ class CommentForm(forms.ModelForm):
         fields = ('name', 'email', 'text',)
 
 class SubscriberForm(forms.Form):
+    first_name = forms.CharField(label='Your first name', max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(label='Your last name', max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.EmailField(label='Your email', max_length=100, widget=forms.EmailInput(attrs={'class': 'form-control'}))
