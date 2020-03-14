@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Post, Comment, Subscriber
+from .models import Post, Comment, Subscriber, Newsletter
 
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
@@ -25,3 +25,10 @@ class CommentAdmin(admin.ModelAdmin):
 class SubscriberAdmin(admin.ModelAdmin):
     list_display = ('email', 'first_name', 'last_name', 'confirmed')
     fields = ('email', 'first_name', 'last_name', 'conf_num', 'confirmed')
+
+@admin.register(Newsletter)
+class PostAdmin(SummernoteModelAdmin):
+    list_display = ('subject', 'created_at', 'updated_at')
+    search_fields = ['subject', 'contents']
+    fields = ('subject', 'contents', 'created_at', 'updated_at')
+    summernote_fields = ('contents')
