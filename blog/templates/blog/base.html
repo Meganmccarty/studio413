@@ -46,6 +46,13 @@
                 </div>
             </div>
         </header></a>
+        <nav class="menu">
+            <ul>
+                <li class="menu-item"><a class="menu-item" href="/">Home</a></li>
+                <li class="menu-item"><a class="menu-item" href="{% url 'about' %}">About</a></li>
+                <li class="menu-item"><a class="menu-item" href="{% url 'products' %}">Products</a></li>
+            </ul>
+        </nav>
         <div class="main-flex-container">
             <div class="flex-container-posts">
                 {% block content %}

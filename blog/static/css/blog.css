@@ -38,6 +38,25 @@ header {
     width: auto;
 }
 
+.menu {
+    background-color: rgb(193, 222, 227);
+}
+
+.menu-item {
+    display: inline;
+    padding: 5px;
+    list-style: none;
+    font-size: 25px;
+    color: black;
+    text-decoration: none;
+}
+
+.menu-item:hover {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(0,40,110);
+}
+
 /*---------- About Me Image ----------*/
 
 .about-me-img {
