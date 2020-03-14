@@ -42,6 +42,10 @@ def post_detail(request, slug):
 def about(request):
     return render(request, 'blog/about.html')
 
+### Products Page
+def products(request):
+    return render(request, 'blog/products.html')
+
 ### These views are private (REQUIRE admin log in) --->
 
 ### New Post

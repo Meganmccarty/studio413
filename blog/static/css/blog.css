@@ -127,6 +127,13 @@ header {
     font-family: 'Simonetta';
 }
 
+.sidebar-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 .flex-card:hover, .flex-card-post:hover {
     box-shadow: 0 6px 10px 0 rgb(190,190,190);
 }
