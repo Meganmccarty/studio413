@@ -73,6 +73,26 @@
                         <a href="{% url 'products' %}"><button class="styled-button">More products</button></a>
                     </div>
                 </div>
+                <div class="flex-card">
+                    <h5 class="flex-card-header">Studio413 Email Newsletter!</h5>
+                    <div class="flex-card-body">
+                        <div>
+                            {% if email %}
+                                <p>{{ email }} has been {{ action }}.</p>
+                            {% endif %}
+                        </div>
+                        {% if form %}
+                            <div>
+                                <form method="post" novalidate>
+                                    {% csrf_token %}
+                                    {{ form }}
+                                    <br>
+                                    <button type="submit" class="styled-button">Subscribe!</button>
+                                </form>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
                 <!--This is the Sample Video Card. Once we have a video, put it here and uncomment this card.-->
                 <!--<div class="flex-card">
                     <h5 class="flex-card-header">Sample Video</h5>
