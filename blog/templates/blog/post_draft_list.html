@@ -1,6 +1,9 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+<head>
+    {% block title %}<title>Studio413 - Drafts</title>{% endblock %}
+</head>
     {% if user.is_authenticated %}
         {% for post in posts %}
             <div class="flex-card-post">

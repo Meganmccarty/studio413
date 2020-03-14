@@ -1,6 +1,9 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+<head>
+    {% block title %}<title>Studio413 - Home</title>{% endblock %}
+</head>
     {% for post in posts %}
         <div class="flex-card-post">
             <h3 class="flex-card-header">{{ post.title }}</h3>
