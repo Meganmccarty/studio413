@@ -71,7 +71,7 @@ def new(request):
             subject='Welcome to the Studio413 Newsletter!',
             html_content='Thank you for signing up for the Studio413 newsletter! \
                 Before you can receive your exclusive member goodies, please \
-                <a href="{}/confirm/?email={}&conf_num={}"> click here to \
+                <a href="{}?email={}&conf_num={}"> click here to \
                 confirm your registration</a>.'.format(request.build_absolute_uri('/confirm/'),
                                                     sub.email,
                                                     sub.conf_num))
