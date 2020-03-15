@@ -8,8 +8,17 @@
     <h2 class="flex-card-header">Sign up for the Studio413 Newsletter!</h2>
     <div class="flex-card-body">
         {% if email %}
-            <p>Success! Your email, {{ email }}, has been {{ action }} to the mailing list!</p>
-            <p>Look for a confirmation email in your inbox.</p>
+            {% if action == 'added' %}
+                <p>Success! Your email, {{ email }} has been {{ action }} to the mailing list!</p>
+                <p>Within the next few minutes, a confirmation email should appear your inbox. If you don't see it, be sure check your spam folder.</p>
+            {% elif action == 'confirmed' %}
+                <p>Success! Your email, {{ email }}, has been {{ action }}!</p>
+                <p>You can download your excluse member package by <a href="#">clicking here</a>.</p>
+            {% elif action == 'unsubscribed' %}
+                <p>We're sorry to see you go! Your email, {{ email }}, has been {{ action }} from the mailing list.</p>
+            {% else %}
+                <p>This action has been denied.</p>
+            {% endif %}
         {% else %}
             {% if form %}
                 <p>Please enter your information below.</p>
