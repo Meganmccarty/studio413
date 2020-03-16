@@ -69,10 +69,12 @@ def new(request):
             from_email=settings.FROM_EMAIL,
             to_emails=sub.email,
             subject='Welcome to the Studio413 Newsletter!',
-            html_content='Thank you for signing up for the Studio413 newsletter! \
-                Before you can receive your exclusive member goodies, please \
+            html_content='<p>Hello {}!</p> <br> <p>Thank you for signing up for the Studio413 newsletter! \
+                I\'m looking forward to sharing exclusive creative art content with you here!</p> \
+                <p>Before you can receive your exclusive member goodies, please \
                 <a href="{}?email={}&conf_num={}"> click here to \
-                confirm your registration</a>.'.format(request.build_absolute_uri('/confirm/'),
+                confirm your registration</a>.</p>'.format(sub.first_name,
+                                                    request.build_absolute_uri('/confirm/'),
                                                     sub.email,
                                                     sub.conf_num))
         sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
