@@ -37,6 +37,6 @@ class NewsletterAdmin(SummernoteModelAdmin):
     list_display = ('subject', 'created_at', 'updated_at')
     search_fields = ['subject', 'contents']
     fields = ('subject', 'contents', 'created_at', 'updated_at')
-    summernote_fields = ('contents')
+    #summernote_fields = ('contents')
     actions = [send_newsletter]
-    
+
