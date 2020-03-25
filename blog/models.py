@@ -58,7 +58,7 @@ class Newsletter(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(blank=True, null=True)
     subject = models.CharField(max_length=150)
-    contents = models.FileField(upload_to='media/uploaded_newsletters/')
+    contents = models.FileField(upload_to='uploaded_newsletters/')
 
     def __str__(self):
         return self.subject + " " + self.created_at.strftime("%B %d, %Y")
