@@ -49,7 +49,7 @@
         <nav class="menu">
             <ul>
                 <li class="menu-item"><a class="menu-item" href="/">Home</a></li>
-                <li class="menu-item"><a class="menu-item" href="{% url 'about' %}">About</a></li>
+                <li class="menu-item"><a class="menu-item" href="{% url 'post_list' %}">Blog</a></li>
                 <li class="menu-item"><a class="menu-item" href="{% url 'products' %}">Products</a></li>
             </ul>
         </nav>
@@ -80,13 +80,13 @@
                     <div class="flex-card-body">
                         <div class="products-card">
                             <script type='text/javascript' src='https://www.etsy.com/assets/js/etsy_mini_shop.js'></script>
-                            <script type='text/javascript'>new Etsy.Mini(21292598,'thumbnail',3,3,0,'https://www.etsy.com');</script>
+                            <script type='text/javascript'>new Etsy.Mini(21292598,'thumbnail',3,2,0,'https://www.etsy.com');</script>
                         </div>
                         <a href="{% url 'products' %}"><button class="styled-button">More products</button></a>
                     </div>
                 </div>
                 <div class="flex-card">
-                    <h5 class="flex-card-header">Studio413 Email Newsletter!</h5>
+                    <h5 class="flex-card-header">Studio413 Newsletter!</h5>
                     <div class="flex-card-body">
                         <p>Want to receive exclusive member deals, content, and freebies? Subscribe to the Studio413 Newsletter!</p>
                         <a href="{% url 'new' %}"><button class="styled-button">Sign me up!</button></a>
@@ -102,7 +102,7 @@
                 <div class="flex-card">
                     <h5 class="flex-card-header">Follow Us on Twitter!</h5>
                     <div class="flex-card-body">
-                        <a class="twitter-timeline" data-height="300" data-theme="light" href="https://twitter.com/ZStudio413?ref_src=twsrc%5Etfw"></a>
+                        <a class="twitter-timeline" data-height="250" data-theme="light" href="https://twitter.com/ZStudio413?ref_src=twsrc%5Etfw"></a>
                     </div>
                 </div>
                 <div class="flex-card">
@@ -144,10 +144,10 @@
             {% endif %}
             <p class="m-0 text-muted text-center small">Website created by Megan McCarty</p>
         </footer>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=815653788912434&autoLogAppEvents=1"></script>
     </body>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=815653788912434&autoLogAppEvents=1"></script>
 </html>

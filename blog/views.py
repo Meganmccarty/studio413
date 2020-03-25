@@ -13,7 +13,7 @@ from sendgrid.helpers.mail import Mail
 
 ### These views are public (do NOT require admin log in) --->
 
-### Home Page (Post List)
+### Blog Page (Post List)
 def post_list(request):
     post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     paginator = Paginator(post_list, 10)
@@ -43,9 +43,9 @@ def post_detail(request, slug):
         comment_form = CommentForm()
     return render(request, 'blog/post_detail.html', {'post': post, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form})
 
-### About Page
-def about(request):
-    return render(request, 'blog/about.html')
+### Home Page
+def home(request):
+    return render(request, 'blog/home.html')
 
 ### Products Page
 def products(request):
