@@ -134,15 +134,22 @@
                 </div>-->
             </div>
         </div>
-        <footer class="py-3 bg-grey">
-            <p class="m-0 text-dark text-center">Copyright &copy; 2020 Studio413. All rights reserved.</p>
-            <br>
+        <hr>
+        <footer>
+            <div class="icons-container">
+                <a href="https://www.facebook.com/groups/322580975338340/"><img class="icons" src="{% static 'images/facebook-icon.png' %}"></a>
+                <a href="https://twitter.com/ZStudio413"><img class="icons" src="{% static 'images/twitter-icon.png' %}"></a>
+                <a href="https://www.instagram.com/zenstudio413/"><img class="icons" src="{% static 'images/instagram-icon.png' %}"></a>
+                <!--<a href="#"><img class="icons" src="{% static 'images/youtube-icon.png' %}"></a>-->
+                <a href="https://www.etsy.com/shop/Studio413CreativeArt"><img class="icons" src="{% static 'images/etsy-icon.png' %}"></a>
+                <!--<a href="#"><img class="icons" src="{% static 'images/patreon-icon.png' %}"></a>-->
+            </div>
+            <p>Copyright &copy; 2020 Studio413. All rights reserved.</p>
+            <p>Website created by Megan McCarty</p>
             {% if user.is_authenticated %}
             {% else %}
-                <p class="m-0 text-muted text-center small">Admin: <a href="{% url 'login' %}">Log in</a></p>
-                <br>
+                <p class="m-0 text-muted small">Admin: <a href="{% url 'login' %}">Log in</a></p>
             {% endif %}
-            <p class="m-0 text-muted text-center small">Website created by Megan McCarty</p>
         </footer>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
