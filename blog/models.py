@@ -1,9 +1,10 @@
+import base64
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
 from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
+from sendgrid.helpers.mail import (Mail, Attachment, FileContent, FileName, FileType, Disposition)
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -59,6 +60,7 @@ class Newsletter(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     subject = models.CharField(max_length=150)
     contents = models.FileField(upload_to='uploaded_newsletters/')
+    attachment = models.FileField(upload_to='email_attachments/', default='')
 
     def __str__(self):
         return self.subject + " " + self.created_at.strftime("%B %d, %Y")
@@ -78,4 +80,18 @@ class Newsletter(models.Model):
                             request.build_absolute_uri('/delete/'),
                             sub.email,
                             sub.conf_num))
+
+            with open(self.attachment.path, 'rb') as f:
+                data = f.read()
+                f.close()
+            encoded_file = base64.b64encode(data).decode()
+
+            attachedFile = Attachment(
+                FileContent(encoded_file),
+                FileName(self.attachment.path),
+                FileType('application/pdf'),
+                Disposition('attachment')
+            )
+            message.attachment = attachedFile
+
             sg.send(message)
