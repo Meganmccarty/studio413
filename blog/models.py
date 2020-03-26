@@ -60,7 +60,7 @@ class Newsletter(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True)
     subject = models.CharField(max_length=150)
     contents = models.FileField(upload_to='uploaded_newsletters/')
-    attachment = models.FileField(upload_to='email_attachments/', default='')
+    attachment = models.FileField(upload_to='email_attachments/', default='', null=True, blank=True)
 
     def __str__(self):
         return self.subject + " " + self.created_at.strftime("%B %d, %Y")
