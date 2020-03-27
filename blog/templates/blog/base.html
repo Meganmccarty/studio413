@@ -29,7 +29,7 @@
                             <a class="nav-link text-black font-weight-bold" href="{% url 'post_draft_list' %}"><span class="glyphicon glyphicon-edit"></span>Drafts</a>
                         </li>
                         <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="https://studio413.pythonanywhere.com/admin">Admin</a>
+                            <a class="nav-link text-black font-weight-bold" href="https://www.zenstudio413.com/admin">Admin</a>
                         </li>
                         <li class="nav-item text-black">
                             <a class="nav-link text-black font-weight-bold" href="{% url 'logout' %}">Log out</a>
@@ -76,6 +76,13 @@
                     </div>
                 </div>
                 <div class="flex-card">
+                    <h5 class="flex-card-header">Studio413 Newsletter!</h5>
+                    <div class="flex-card-body">
+                        <p>Want to receive exclusive member deals, content, and freebies? Subscribe to the Studio413 Newsletter!</p>
+                        <a href="{% url 'new' %}"><button class="styled-button">Sign me up!</button></a>
+                    </div>
+                </div>
+                <div class="flex-card">
                     <h5 class="flex-card-header">Shop Studio413 on Etsy!</h5>
                     <div class="flex-card-body">
                         <div class="products-card">
@@ -85,13 +92,13 @@
                         <a href="{% url 'products' %}"><button class="styled-button">More products</button></a>
                     </div>
                 </div>
-                <div class="flex-card">
-                    <h5 class="flex-card-header">Studio413 Newsletter!</h5>
+                <!--This is the Patreon Card. Once the account is set up, put it here and uncomment this card.-->
+                <!--<div class="flex-card">
+                    <h5 class="flex-card-header">Support Us on Patreon!</h5>
                     <div class="flex-card-body">
-                        <p>Want to receive exclusive member deals, content, and freebies? Subscribe to the Studio413 Newsletter!</p>
-                        <a href="{% url 'new' %}"><button class="styled-button">Sign me up!</button></a>
+                        <p>[Patreon info/link will go here.]</p>
                     </div>
-                </div>
+                </div>-->
                 <!--This is the Sample Video Card. Once we have a video, put it here and uncomment this card.-->
                 <!--<div class="flex-card">
                     <h5 class="flex-card-header">Sample Video</h5>
@@ -111,6 +118,8 @@
                         <div class="fb-group" data-href="https://www.facebook.com/groups/322580975338340/" data-show-social-context="true"></div>
                     </div>
                 </div>
+                <!--This is the Instagram Card. However, the current setup is not working. When one that works is found,
+                    put it here and uncomment this card.-->
                 <!--<div class="flex-card">
                     <h5 class="flex-card-header">Follow Us on Instagram!</h5>
                     <div class="flex-card-body">
