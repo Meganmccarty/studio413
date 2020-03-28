@@ -13,6 +13,15 @@ body {
     font-size: 19px;
 }
 
+#doodles {
+    width: 50%;
+}
+
+#flowers {
+    width: 50%;
+    box-shadow: 0 10px 10px rgb(50,50,50);
+}
+
 /*---------- Blog Header ----------*/
 
 header {

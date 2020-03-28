@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 
 {% block content %}
 <head>
@@ -31,6 +32,7 @@
                 doodling with incredible attention to detail. It's in the creation
                 of these doodles, or patterns, that causes an incredible serenity,
                 calm, and mindfulness of being "in the flow."
+                <center><img id="doodles" src="{% static 'images/doodles.jpg'%}"></img></center>
             </p>
             <p class="home-page-text">
                 Being "in the flow" means accepting what is happening in the
@@ -50,6 +52,7 @@
                 so I have something super portable to use while out and about.
                 As a practice, I am in my art studio most of every day doing
                 some kind of art.
+                <center><img id="flowers" src="{% static 'images/flowers.jpg'%}"></img></center>
             </p>
             <p class="home-page-text">
                 I'll be posting a lot of my pieces in upcoming posts. If you'd
