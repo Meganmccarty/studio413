@@ -9,6 +9,14 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous" />
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164078557-1"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-164078557-1');
+            </script>
     </head>
     <body>
         <div id="fb-root"></div>
@@ -139,12 +147,21 @@
                     </div>
                 </div>-->
                 <!--This is the Youtube Channel Card. Once we launch the channel, put it here and uncomment this card.-->
-                <!--<div class="flex-card">
+                <div class="flex-card">
                     <h5 class="flex-card-header">Subscribe to Our Youtube Channel!</h5>
                     <div class="flex-card-body">
-                        <p>[Your Youtube Channel will go here, with some of your videos appearing in this box. <a href="https://support.google.com/youtube/answer/171780?hl=en">Here's how to set it up.</a>]</p>
+                        <div class="about-me-img">
+                            <a href="https://www.youtube.com/channel/UCE-0ctobYDxR5jjL3UUXwDA">
+                                <img src="https://yt3.ggpht.com/a-/AOh14GhPyI8iDHaauFoIsvzcBqf7dvVkNz31rl_j2-qS=s288-c-k-c0xffffffff-no-rj-mo">
+                            </a>
+                        </div>
+                        <p>Subscribe to <a href="https://www.youtube.com/channel/UCE-0ctobYDxR5jjL3UUXwDA">Zen Studio413</a>:
+                        <script src="https://apis.google.com/js/platform.js"></script>
+                        <div class="g-ytsubscribe" data-channelid="UCE-0ctobYDxR5jjL3UUXwDA"
+                        data-layout="default" data-count="default"></div>
+                        </p>
                     </div>
-                </div>-->
+                </div>
                 <!--This is the Affiliate Links Card. Once we have some links, add them here and uncomment this card.-->
                 <!--<div class="flex-card">
                     <h5 class="flex-card-header">Affiliate Links</h5>
@@ -162,7 +179,7 @@
                 <a href="https://twitter.com/ZStudio413"><img class="icons" src="{% static 'images/twitter-icon.png' %}"></a>
                 <a href="https://www.instagram.com/zenstudio413/"><img class="icons" src="{% static 'images/instagram-icon.png' %}"></a>
                 <a href="https://www.facebook.com/groups/322580975338340/"><img class="icons" src="{% static 'images/facebook-icon.png' %}"></a>
-                <!--<a href="#"><img class="icons" src="{% static 'images/youtube-icon.png' %}"></a>-->
+                <a href="https://www.youtube.com/channel/UCE-0ctobYDxR5jjL3UUXwDA"><img class="icons" src="{% static 'images/youtube-icon.png' %}"></a>
             </div>
             <p>Copyright &copy; 2020 Studio413. All rights reserved.</p>
             <p>Website created by Megan McCarty</p>
