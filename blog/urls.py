@@ -8,6 +8,7 @@ urlpatterns = [
     path('new-subscriber/', views.new, name='new'),
     path('confirm/', views.confirm, name='confirm'),
     path('delete/', views.delete, name='delete'),
+    path('contact/', views.contact, name='contact'),
     path('post/new/', views.post_new, name='post_new'),
     path('post/<slug>/', views.post_detail, name='post_detail'),
     path('post/<slug>/edit/', views.post_edit, name='post_edit'),

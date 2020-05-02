@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Post, Comment, Subscriber
-from .forms import PostForm, CommentForm, SubscriberForm
+from .forms import PostForm, CommentForm, SubscriberForm, ContactForm
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse
 from django.conf import settings
+from django.core.mail import send_mail
 import random
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
@@ -161,3 +162,21 @@ def post_remove(request, slug):
     post = get_object_or_404(Post, slug=slug)
     post.delete()
     return redirect('post_list')
+
+### Contact Page (Temporarily requires log in until I get it properly configured)
+@login_required
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # send email code goes here
+            sender_name = form.cleaned_data['name']
+            sender_email = form.cleaned_data['email']
+
+            message = "{0} has sent you a new message:\n\n{1}".format(sender_name, form.cleaned_data['message'])
+            send_mail('New Enquiry', message, sender_email, [settings.STUDIO413_EMAIL])
+            return render(request, 'blog/success.html')
+    else:
+        form = ContactForm()
+
+    return render(request, 'blog/contact.html', {'form': form})

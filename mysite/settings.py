@@ -30,6 +30,18 @@ ALLOWED_HOSTS = [u'www.zenstudio413.com']
 FROM_EMAIL = os.getenv("FROM_EMAIL")
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 
+# EMAIL_HOST = 'smtp-mail.outlook.com' # for outlook, though it doesn't work
+# EMAIL_HOST_USER = 'outlook email
+# EMAIL_HOST_PASSWORD = 'outlook password'
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("SENDGRID_API_KEY")
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+STUDIO413_EMAIL = os.getenv("STUDIO413_EMAIL")
+
 # Application definition
 
 INSTALLED_APPS = [
