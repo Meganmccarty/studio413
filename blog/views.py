@@ -52,6 +52,23 @@ def home(request):
 def products(request):
     return render(request, 'blog/products.html')
 
+### Contact Page
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # send email code goes here
+            sender_name = form.cleaned_data['name']
+            sender_email = form.cleaned_data['email']
+
+            message = "{0} has sent you a new message:\n\n{1}".format(sender_name, form.cleaned_data['message'])
+            send_mail('New Enquiry', message, sender_email, [settings.STUDIO413_EMAIL])
+            return render(request, 'blog/success.html')
+    else:
+        form = ContactForm()
+
+    return render(request, 'blog/contact.html', {'form': form})
+
 ### New Subscriber Page
 # Helper Functions
 
@@ -162,21 +179,3 @@ def post_remove(request, slug):
     post = get_object_or_404(Post, slug=slug)
     post.delete()
     return redirect('post_list')
-
-### Contact Page (Temporarily requires log in until I get it properly configured)
-@login_required
-def contact(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            # send email code goes here
-            sender_name = form.cleaned_data['name']
-            sender_email = form.cleaned_data['email']
-
-            message = "{0} has sent you a new message:\n\n{1}".format(sender_name, form.cleaned_data['message'])
-            send_mail('New Enquiry', message, sender_email, [settings.STUDIO413_EMAIL])
-            return render(request, 'blog/success.html')
-    else:
-        form = ContactForm()
-
-    return render(request, 'blog/contact.html', {'form': form})
