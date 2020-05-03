@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Post, Comment, Subscriber
 from .forms import PostForm, CommentForm, SubscriberForm, ContactForm
+from .etsy import etsy_data
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -50,7 +51,21 @@ def home(request):
 
 ### Products Page
 def products(request):
-    return render(request, 'blog/products.html')
+    parsed_data = []
+    etsy_results = etsy_data['results']
+
+    for results in etsy_results:
+        result_data = {}
+        result_data['title'] = results['title']
+        result_data['price'] = results['price']
+        result_data['url'] = results['url']
+        result_data['views'] = results['views']
+        result_data['likes'] = results['num_favorers']
+        result_data['image'] = results['Images'][0]['url_570xN']
+        result_data['digital'] = results['is_digital']
+        parsed_data.append(result_data)
+
+    return render(request, 'blog/products.html', {'data' : parsed_data})
 
 ### Contact Page
 def contact(request):
