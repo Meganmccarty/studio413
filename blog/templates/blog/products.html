@@ -8,7 +8,7 @@
 <div class="flex-card-post">
     <h2 class="flex-card-header">Products</h2>
     <div class="flex-card-body">
-        <h3>Therapeutic Art Pages</h3>
+        <h3>Create-It-Yourself Therapeutic Art Pages</h3>
         <div class="products-box">
             {% for result in data %}
                 {% if result.digital %}
@@ -23,7 +23,7 @@
                                 <img class="views-likes" src="{% static 'images/likes.png'%}"> {{result.likes}} |
                                 ${{result.price}}
                             {% else %}
-                                <img class="views-likes" src="{% static 'images/likes.png'%}"> {{result.views}} |
+                                <img class="views-likes" src="{% static 'images/views.png'%}"> {{result.views}} |
                                 ${{result.price}}
                             {% endif %}
                         </div>
@@ -33,7 +33,7 @@
             {% endfor %}
         </div>
         <br>
-        <h3>Art Pieces</h3>
+        <h3>Art for Sale</h3>
         <div class="products-box">
             {% for result in data %}
                 {% if not result.digital %}
@@ -48,7 +48,7 @@
                                 <img class="views-likes" src="{% static 'images/likes.png'%}"> {{result.likes}} |
                                 ${{result.price}}
                             {% else %}
-                                <img class="views-likes" src="{% static 'images/likes.png'%}"> {{result.views}} |
+                                <img class="views-likes" src="{% static 'images/views.png'%}"> {{result.views}} |
                                 ${{result.price}}
                             {% endif %}
                         </div>
