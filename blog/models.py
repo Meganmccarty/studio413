@@ -1,6 +1,8 @@
 import base64
 from django.conf import settings
+from django.core.mail import send_mail
 from django.db import models
+from django.dispatch import receiver
 from django.utils import timezone
 from django.utils.text import slugify
 from sendgrid import SendGridAPIClient
@@ -38,6 +40,21 @@ class Comment(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     approved_comment = models.BooleanField(default=False)
 
+    @receiver(models.signals.post_save, sender='blog.Comment')
+    def execute_after_save(sender, instance, created, *args, **kwargs):
+        if created:
+            email_message = 'You have a new comment awaiting approval on your blog! ' \
+                'To see it, click the following link:\n\n' \
+                'https://www.zenstudio413.com/admin/blog/comment/ ' \
+                '\n\nDo not respond to this email address. If you wish to reach the webmaster, ' \
+                'forward this email, along with your message, to megan_mccarty@hotmail.com'
+            send_mail(
+                subject='New Comment',
+                message=email_message,
+                from_email='admin@zenstudio413.com',
+                recipient_list=[settings.STUDIO413_EMAIL]
+            )
+
     def approve(self):
         self.approved_comment = True
         self.save()
@@ -51,6 +68,21 @@ class Subscriber(models.Model):
     email = models.EmailField(unique=True)
     conf_num = models.CharField(max_length=15)
     confirmed = models.BooleanField(default=False)
+
+    @receiver(models.signals.post_save, sender='blog.Subscriber')
+    def execute_after_save(sender, instance, created, *args, **kwargs):
+        if created:
+            email_message = 'You have a new subscriber for your blog\'s newsletter! ' \
+                'To see who it is, click the following link:\n\n' \
+                'https://www.zenstudio413.com/admin/blog/subscriber/ ' \
+                '\n\nDo not respond to this email address. If you wish to reach the webmaster, ' \
+                'forward this email, along with your message, to megan_mccarty@hotmail.com'
+            send_mail(
+                subject='New Subscriber',
+                message=email_message,
+                from_email='admin@zenstudio413.com',
+                recipient_list=[settings.STUDIO413_EMAIL]
+            )
 
     def __str__(self):
         return self.email + " (" + ("not " if not self.confirmed else "") + "confirmed)"
