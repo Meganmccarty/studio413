@@ -2,6 +2,12 @@ from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
 from .models import Post, Comment, Subscriber, Newsletter
 
+def send_notification(modeladmin, request, queryset):
+    for post in queryset:
+        post.send(request)
+
+send_notification.short_description = "Send selected Post(s) to all subscribers"
+
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
     list_display = ('title', 'author', 'created_date', 'published_date')
@@ -9,6 +15,7 @@ class PostAdmin(SummernoteModelAdmin):
     fields = ('title', 'author', 'text', 'created_date', 'published_date')
     summernote_fields = ('text')
     #prepopulated_fields = {'slug': ('title',)}
+    actions = [send_notification]
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):

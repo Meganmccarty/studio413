@@ -31,6 +31,42 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def send(self, request):
+        subscribers = Subscriber.objects.filter(confirmed=True)
+        sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
+        for sub in subscribers:
+            message = Mail(
+                    from_email=settings.FROM_EMAIL,
+                    to_emails=sub.email,
+                    subject="New blog post on Studio413!",
+                    html_content=(
+                        '<div style="background-color:rgb(0,40,110);border:10px solid rgb(0,40,110);border-radius:10px">' \
+                        '<div style="background-color:rgb(193,222,227);border:10px solid rgb(193,222,227);border-radius:10px">' \
+                        '<div style="background-color:white;border-radius:10px">' \
+                        '<center><h3>Studio413 has published a new blog post!</h3></center>'\
+                        '<br>' \
+                        '<span style="margin-left:10px">Click the following link to read the new post:</span>' \
+                        '<br>' \
+                        '<span style="margin-left:10px"><a href="{}/{}/">{}</a></span>'\
+                        '<br>' \
+                        '<span style="margin-left:10px">Or, you can copy and paste the following url into your browser:</span>' \
+                        '<br>' \
+                        '<span style="margin-left:10px">{}/{}</span>'\
+                        '<br>' \
+                        '<hr><center>If you no longer wish to receive our newsletters, you can ' \
+                        '<a href="{}/?email={}&conf_num={}">unsubscribe</a>.</center><br></div></div></div>').format(
+                            request.build_absolute_uri('/post'),
+                            self.slug,
+                            self.title,
+                            request.build_absolute_uri('/post'),
+                            self.slug,
+                            request.build_absolute_uri('/delete'),
+                            sub.email,
+                            sub.conf_num
+                        )
+                    )
+            sg.send(message)
+
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', on_delete=models.CASCADE, related_name='comments')
     author = models.CharField(max_length=200)
