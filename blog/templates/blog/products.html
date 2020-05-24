@@ -8,51 +8,23 @@
 <div class="flex-card-post">
     <h2 class="flex-card-header">Products</h2>
     <div class="flex-card-body">
-        <h3>Create-It-Yourself Therapeutic Art Pages</h3>
-        <div class="products-box">
+        <div class="art-box">
             {% for result in data %}
-                {% if result.digital %}
-                    <div class="products-card">
+                {% if result.id == 748364566 %}
+                    <div class="art-choices">
+                        <a class="no-style" href="{% url 'art_pages' %}"><h4>Create-It-Yourself</h4></a>
+                        <a class="no-style" href="{% url 'art_pages' %}"><h4>Therapeutic Art Pages</h4></a>
                         <div class="product-img">
-                            <img src={{result.image}}>
+                            <a href="{% url 'art_pages' %}"><img src={{result.image}}></a>
                         </div>
-                        <p><b>{{result.title}}</b></p>
-                        <div>
-                            {% if result.likes %}
-                                <img class="views-likes" src="{% static 'images/views.png'%}"> {{result.views}} |
-                                <img class="views-likes" src="{% static 'images/likes.png'%}"> {{result.likes}} |
-                                ${{result.price}}
-                            {% else %}
-                                <img class="views-likes" src="{% static 'images/views.png'%}"> {{result.views}} |
-                                ${{result.price}}
-                            {% endif %}
-                        </div>
-                        <a href={{result.url}}><button class="buy-button">Buy now!</button></a>
                     </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-        <br>
-        <h3>Art for Sale</h3>
-        <div class="products-box">
-            {% for result in data %}
-                {% if not result.digital %}
-                    <div class="products-card">
+                {% elif result.id == 795786998 %}
+                    <div class="art-choices">
+                        <a class="no-style" href="{% url 'art_for_sale' %}"><h4>Art for Sale</h4></a>
+                        <br>
                         <div class="product-img">
-                            <img src={{result.image}}>
+                            <a href="{% url 'art_for_sale' %}"><img src={{result.image}}></a>
                         </div>
-                        <p><b>{{result.title}}</b></p>
-                        <div>
-                            {% if result.likes %}
-                                <img class="views-likes" src="{% static 'images/views.png'%}"> {{result.views}} |
-                                <img class="views-likes" src="{% static 'images/likes.png'%}"> {{result.likes}} |
-                                ${{result.price}}
-                            {% else %}
-                                <img class="views-likes" src="{% static 'images/views.png'%}"> {{result.views}} |
-                                ${{result.price}}
-                            {% endif %}
-                        </div>
-                        <a href={{result.url}}><button class="buy-button">Buy now!</button></a>
                     </div>
                 {% endif %}
             {% endfor %}

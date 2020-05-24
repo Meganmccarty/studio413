@@ -56,6 +56,19 @@ def products(request):
 
     for results in etsy_results:
         result_data = {}
+        result_data['id'] = results['listing_id']
+        result_data['image'] = results['Images'][0]['url_570xN']
+        parsed_data.append(result_data)
+
+    return render(request, 'blog/products.html', {'data' : parsed_data})
+
+### Therapeutic Art Pages Subpage
+def art_pages(request):
+    parsed_data = []
+    etsy_results = etsy_data['results']
+
+    for results in etsy_results:
+        result_data = {}
         result_data['title'] = results['title']
         result_data['price'] = results['price']
         result_data['url'] = results['url']
@@ -65,7 +78,25 @@ def products(request):
         result_data['digital'] = results['is_digital']
         parsed_data.append(result_data)
 
-    return render(request, 'blog/products.html', {'data' : parsed_data})
+    return render(request, 'blog/art_pages.html', {'data' : parsed_data})
+
+### Art for Sale Subpage
+def art_for_sale(request):
+    parsed_data = []
+    etsy_results = etsy_data['results']
+
+    for results in etsy_results:
+        result_data = {}
+        result_data['title'] = results['title']
+        result_data['price'] = results['price']
+        result_data['url'] = results['url']
+        result_data['views'] = results['views']
+        result_data['likes'] = results['num_favorers']
+        result_data['image'] = results['Images'][0]['url_570xN']
+        result_data['digital'] = results['is_digital']
+        parsed_data.append(result_data)
+
+    return render(request, 'blog/art_for_sale.html', {'data' : parsed_data})
 
 ### Contact Page
 def contact(request):
