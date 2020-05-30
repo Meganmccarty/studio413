@@ -5,10 +5,16 @@ from .models import Post, Comment, Subscriber
 
 class PostForm(forms.ModelForm):
     title = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    youtube_video = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}),
+                    help_text='This is for a single YouTube video to be displayed at the top of a post. '\
+                    'To get the code, go to the video on YouTube, click on the "Share" option, and then '\
+                    'click on "Embed". Copy and paste the code here. If you want the video to look good '\
+                    'on phones, change the number in quotes for "width" from "560" to "75%" (It is at '\
+                    'the very beginning of the code you posted).')
     text = forms.CharField(widget=SummernoteWidget())
     class Meta:
         model = Post
-        fields = ('title', 'text',)
+        fields = ('title', 'youtube_video', 'text')
 
 class CommentForm(forms.ModelForm):
 

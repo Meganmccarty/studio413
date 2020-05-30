@@ -12,7 +12,7 @@ send_notification.short_description = "Send selected Post(s) to all subscribers"
 class PostAdmin(SummernoteModelAdmin):
     list_display = ('title', 'author', 'created_date', 'published_date')
     search_fields = ['title', 'text']
-    fields = ('title', 'author', 'text', 'created_date', 'published_date')
+    fields = ('title', 'author', 'youtube_video', 'text', 'created_date', 'published_date')
     summernote_fields = ('text')
     #prepopulated_fields = {'slug': ('title',)}
     actions = [send_notification]
