@@ -1,10 +1,9 @@
 {% extends "blog/base.html" %}
 {% load static %}
 
+{% block title %}Art for Sale{% endblock %}
+
 {% block content %}
-<head>
-    {% block title %}<title>Studio413 - Products: Art for Sale</title>{% endblock %}
-</head>
 <div class="flex-card-post">
     <h2 class="flex-card-header"><a class="no-style" href="{% url 'products' %}">Products</a> – Art for Sale</h2>
     <div class="flex-card-body">

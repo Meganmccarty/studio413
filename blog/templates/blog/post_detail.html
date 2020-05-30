@@ -1,9 +1,8 @@
 {% extends 'blog/base.html' %}
 
+{% block title %}{{ post.title }}{% endblock %}
+
 {% block content %}
-<head>
-    {% block title %}<title>Studio413 - {{ post.title }}</title>{% endblock %}
-</head>
 {% load crispy_forms_tags %}
     {% if post.published_date %}
         <!--Code for viewing a published post (with ability for admin to edit/delete)-->
