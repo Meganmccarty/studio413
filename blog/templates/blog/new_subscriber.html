@@ -21,7 +21,7 @@
         {% else %}
             {% if form %}
                 <p>Please enter your information below.</p>
-                <form method="post" novalidate>
+                <form method="post">
                     {{ form }}
                     {% csrf_token %}
                     <br>
