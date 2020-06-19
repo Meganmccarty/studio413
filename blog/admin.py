@@ -23,10 +23,10 @@ class CommentAdmin(admin.ModelAdmin):
     list_filter = ('approved_comment', 'created_date')
     search_fields = ('name', 'email', 'text')
     fields = ('post', 'name', 'email', 'text', 'created_date', 'approved_comment')
-    actions = ['approve_comments']
+    actions = ['approved_comments']
 
-    def approve_comments(self, request, queryset):
-        queryset.update(approve_comment=True)
+    def approved_comments(self, request, queryset):
+        queryset.update(approved_comment=True)
 
 @admin.register(Subscriber)
 class SubscriberAdmin(admin.ModelAdmin):
