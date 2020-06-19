@@ -132,8 +132,8 @@ def new(request):
         message = Mail(
             from_email=settings.FROM_EMAIL,
             to_emails=sub.email,
-            subject='Welcome to the Studio413 Newsletter!',
-            html_content='<p>Hello {}!</p> <br> <p>Thank you for signing up for the Studio413 newsletter! \
+            subject='Welcome to Studio413!',
+            html_content='<p>Hello {}!</p> <br> <p>Thank you for subscribing to Studio413! \
                 I\'m looking forward to sharing exclusive creative art content with you here!</p> \
                 <p>Before you can receive your exclusive member goodies, please \
                 <a href="{}?email={}&conf_num={}"> click here to \

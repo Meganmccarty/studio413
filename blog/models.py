@@ -114,7 +114,7 @@ class Subscriber(models.Model):
     @receiver(models.signals.post_save, sender='blog.Subscriber')
     def execute_after_save(sender, instance, created, *args, **kwargs):
         if created:
-            email_message = 'You have a new subscriber for your blog\'s newsletter! ' \
+            email_message = 'You have a new subscriber for your blog! ' \
                 'To see who it is, click the following link:\n\n' \
                 'https://www.zenstudio413.com/admin/blog/subscriber/ ' \
                 '\n\nDo not respond to this email address. If you wish to reach the webmaster, ' \
