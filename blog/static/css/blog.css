@@ -63,9 +63,14 @@ body {
     box-shadow: 0 10px 10px rgb(50,50,50);
 }
 
+.no-style, .no-style:hover {
+    text-decoration: none;
+    color: black;
+}
+
 /*---------- Blog Header ----------*/
 
-header {
+heaheader {
     height: 200px;
     background-image: url('../images/header5.jpg');
     background-repeat: no-repeat;
@@ -214,14 +219,14 @@ header {
     font-family: 'Simonetta';
 }
 
-.products-box {
+.products-box, .art-box {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: left;
 }
 
-.products-card {
+.products-card, .art-choices {
     display: flex;
     flex-direction: column;
     align-items: center;
