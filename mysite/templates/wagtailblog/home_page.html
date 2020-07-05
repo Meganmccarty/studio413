@@ -2,6 +2,15 @@
 {% load static %}
 {% load wagtailcore_tags %}
 
+{% block title %}Home{% endblock %}
+
 {% block content %}
-    {{ page.body|richtext }}
+<div class="flex-card-post">
+    <h3 class="flex-card-header">Welcome to Studio413!</h3>
+    <div class="flex-card-body">
+        <div class="flex-card-text">
+            {{ page.body|richtext }}
+        </div>
+    </div>
+</div>
 {% endblock %}
