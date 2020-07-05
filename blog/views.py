@@ -14,7 +14,7 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
 ### These views are public (do NOT require admin log in) --->
-
+"""
 ### Blog Page (Post List)
 def post_list(request):
     post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
@@ -48,7 +48,7 @@ def post_detail(request, slug):
 ### Home Page
 def home(request):
     return render(request, 'blog/home.html')
-
+"""
 ### Products Page
 def products(request):
     parsed_data = []
@@ -165,7 +165,7 @@ def delete(request):
         return render(request, 'blog/new_subscriber.html', {'email': sub.email, 'action': 'denied'})
 
 ### These views are private (REQUIRE admin log in) --->
-
+"""
 ### New Post
 @login_required
 def post_new(request):
@@ -225,3 +225,4 @@ def post_remove(request, slug):
     post = get_object_or_404(Post, slug=slug)
     post.delete()
     return redirect('post_list')
+"""

@@ -1,5 +1,6 @@
 {% load static %}
 {% load wagtailuserbar %}
+{% load wagtailcore_tags %}
 <html>
     <head>
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
@@ -23,33 +24,7 @@
     <body>
         {% wagtailuserbar %}
         <div id="fb-root"></div>
-        {% if user.is_authenticated %}
-        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" id="mainNav">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">Studio413</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="{% url 'post_new' %}"><span class="glyphicon glyphicon-plus"></span>New Post</a>
-                        </li>
-                        <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="{% url 'post_draft_list' %}"><span class="glyphicon glyphicon-edit"></span>Drafts</a>
-                        </li>
-                        <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="https://www.zenstudio413.com/admin">Admin</a>
-                        </li>
-                        <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="{% url 'logout' %}">Log out</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        {% endif %}
+        
         <a href="/"><header>
             <div class="flex-header">
                 <div class="logo">
@@ -68,7 +43,7 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="menu-item"><a class="menu-item" href="/">Home</a></li>
                         <li class="menu-item"><a class="menu-item" href="{% url 'contact' %}">Contact</a></li>
-                        <li class="menu-item"><a class="menu-item" href="{% url 'post_list' %}">Blog</a></li>
+                        <li class="menu-item"><a class="menu-item" href="{% slugurl 'blog' %}">Blog</a></li>
                         <li class="menu-item"><a class="menu-item" href="{% url 'products' %}">Products</a></li>
                         <li class="menu-item"><a class="menu-item" href="https://www.etsy.com/shop/Studio413ArtTherapy">Shop Now!</a></li>
                     </ul>

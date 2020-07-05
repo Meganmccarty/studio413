@@ -28,10 +28,11 @@ urlpatterns = [
     path('accounts/login/', views.LoginView.as_view(), name='login'),
     path('accounts/logout/', views.LogoutView.as_view(next_page='/'), name='logout'),
     path('summernote/', include('django_summernote.urls')),
+    path('', include('blog.urls')),
     re_path(r'^cms/', include(wagtailadmin_urls)),
     re_path(r'^documents/', include(wagtaildocs_urls)),
-    re_path(r'^pages/', include(wagtail_urls)),
-    path('', include('blog.urls')),
+    re_path(r'', include(wagtail_urls)),
+    
 ]
 
 if settings.DEBUG:
