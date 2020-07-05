@@ -13,6 +13,47 @@ body {
     font-size: 19px;
 }
 
+.full-width { /* This is for full-width images only (class used in image_formats.py) */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+}
+
+.left { /* This is for left-aligning images only (class used in image_formats.py) */
+    display: block;
+    margin-right: auto;
+    max-width: 400px;
+}
+
+.right { /* This is for right-aligning images only (class used in image_formats.py) */
+    display: block;
+    margin-left: auto;
+    max-width: 400px;
+}
+
+.center { /* This is for centering images only (class used in image_formats.py) */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+}
+
+.float-left { /* This is for left floating images only (class used in image_formats.py) */
+    float: left;
+    max-width: 400px;
+}
+
+.float-right { /* This is for right floating images only (class used in image_formats.py) */
+    float: right;
+    max-width: 400px;
+}
+
+.img-responsive {
+    width: 100%;
+    height: auto;
+}
+
 #doodles {
     width: 50%;
 }
