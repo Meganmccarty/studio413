@@ -12,6 +12,16 @@ class HomePage(Page):
         FieldPanel('body', classname="full"),
     ]
 
+class BlogIndexPage(Page):
+    pass
+
+    def get_context(self, request):
+        # Update context to include only published posts, ordered by reverse-chron
+        context = super().get_context(request)
+        blogpages = self.get_children().live().order_by('-first_published_at')
+        context['blogpages'] = blogpages
+        return context
+
 class BlogPage(Page):
     date = models.DateField("Post date")
     author = models.CharField(max_length=250, default='', null=True, blank=True)
