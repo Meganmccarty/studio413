@@ -17,4 +17,27 @@
         </div>
     {% endwith %}
 {% endfor %}
+
+{% if blogpages.has_other_pages %}
+<div class="page-buttons">
+    <nav aria-label="Page navigation container"></nav>
+        <ul class="pagination justify-content-center">
+            {% if blogpages.has_previous %}
+                <li><a href="?page={{ blogpages.previous_page_number }}" class="page-link">&laquo; Previous </a></li>
+            {% endif %}
+            {% for page_num in blogpages.paginator.page_range %}
+              <li class="page-item {% if page_num == blogpages.number %} active{% endif %}">
+                <a href="?page={{ page_num }}" class="page-link">
+                  {{ page_num }}
+                </a>
+              </li>
+            {% endfor %}
+            {% if blogpages.has_next %}
+                <li><a href="?page={{ blogpages.next_page_number }}" class="page-link"> Next &raquo;</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endif %}
+
 {% endblock %}

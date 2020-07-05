@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
@@ -13,13 +14,23 @@ class HomePage(Page):
     ]
 
 class BlogIndexPage(Page):
-    pass
+    template = "wagtailblog/blog_index_page.html"
 
-    def get_context(self, request):
+    def get_context(self, request, *args, **kwargs):
         # Update context to include only published posts, ordered by reverse-chron
-        context = super().get_context(request)
-        blogpages = self.get_children().live().order_by('-first_published_at')
-        context['blogpages'] = blogpages
+        context = super(BlogIndexPage, self).get_context(request, *args, **kwargs)
+        blogpages = BlogPage.objects.live().public().order_by('-first_published_at')
+        paginator = Paginator(blogpages, 5)
+        page = request.GET.get("page")
+        try:
+            blogpages = paginator.page(page)
+        except PageNotAnInteger:
+            blogpages = paginator.page(1)
+        except EmptyPage:
+            blogpages = paginator.page(paginator.num_pages)
+
+        context["blogpages"] = blogpages
+
         return context
 
 class BlogPage(Page):
