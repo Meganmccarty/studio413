@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block content %}
+
+{% if request.GET.tag|length %}
+    <h4 class="tag-results">Results – Showing pages tagged "{{ request.GET.tag }}"</h4>
+{% endif %}
+
+{% for post in blogpages %}
+    {% with post=post.specific %}
+        <div class="flex-card-post">
+            <h3 class="flex-card-header">{{ post.title }}</h3>
+            <div class="flex-card-body">
+                <p class="text-muted small">By {{ post.author }} | Published {{ post.date}} </p>
+                <p class="flex-card-text">{{post.body | richtext | truncatewords_html:75 }}</p>
+                <a href="{% pageurl post %}"><button class="styled-button">Read More &rarr;</button></a>
+            </div>
+        </div>
+    {% endwith %}
+{% endfor %}
+
+{% endblock %}

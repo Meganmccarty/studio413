@@ -1,6 +1,10 @@
 from django.db import models
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
+from modelcluster.fields import ParentalKey
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from taggit.models import TaggedItemBase
+
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
@@ -33,10 +37,18 @@ class BlogIndexPage(Page):
 
         return context
 
+class BlogPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'BlogPage',
+        related_name='tagged_items',
+        on_delete=models.CASCADE
+    )
+
 class BlogPage(Page):
     date = models.DateField("Post date")
     author = models.CharField(max_length=250, default='', null=True, blank=True)
     body = RichTextField(blank=True)
+    tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
 
     search_fields = Page.search_fields + [
         index.SearchField('body'),
@@ -46,6 +58,20 @@ class BlogPage(Page):
         MultiFieldPanel([
             FieldPanel('author'),
             FieldPanel('date'),
+            FieldPanel('tags'),
         ], heading="Blog information"),
         FieldPanel('body'),
     ]
+
+class BlogTagIndexPage(Page):
+    pass
+
+    def get_context(self, request):
+        # Filter by tag
+        tag = request.GET.get('tag')
+        blogpages = BlogPage.objects.filter(tags__name=tag)
+
+        # Update template context
+        context = super().get_context(request)
+        context['blogpages'] = blogpages
+        return context

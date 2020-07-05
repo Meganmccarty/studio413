@@ -11,6 +11,14 @@
         <div class="flex-card-body">
             <p class="text-muted">By {{ page.author }} | Published {{ page.date }}</p>
             <p>{{ page.body | richtext }}</p>
+            {% if page.tags.all.count %}
+                <div class="tags">
+                    <h3>Tags</h3>
+                    {% for tag in page.tags.all %}
+                        <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button class="styled-button" type="button">#{{ tag }}</button></a>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
