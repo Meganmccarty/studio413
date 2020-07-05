@@ -70,7 +70,7 @@ body {
 
 /*---------- Blog Header ----------*/
 
-heaheader {
+header {
     height: 200px;
     background-image: url('../images/header5.jpg');
     background-repeat: no-repeat;
