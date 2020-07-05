@@ -45,18 +45,37 @@ STUDIO413_EMAIL = os.getenv("STUDIO413_EMAIL")
 # Application definition
 
 INSTALLED_APPS = [
+    'blog.apps.BlogConfig',
+
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog.apps.BlogConfig',
+
     'crispy_forms',
     'django_summernote',
+
+    'modelcluster',
+    'taggit',
 ]
 
 MIDDLEWARE = [
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -155,3 +174,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = '/'
+
+WAGTAIL_SITE_NAME = 'Studio413'
