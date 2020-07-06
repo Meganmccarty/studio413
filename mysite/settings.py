@@ -45,10 +45,11 @@ STUDIO413_EMAIL = os.getenv("STUDIO413_EMAIL")
 # Application definition
 
 INSTALLED_APPS = [
-    'blog.apps.BlogConfig',
+    #'blog.apps.BlogConfig',
     'wagtailblog',
 
     'wagtail.contrib.forms',
+    'wagtail.contrib.modeladmin',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
     'wagtail.sites',
