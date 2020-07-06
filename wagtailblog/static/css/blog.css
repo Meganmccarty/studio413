@@ -1,0 +1,391 @@
+/*---------- Basic CSS Stuff ----------*/
+
+* {
+    font-family: 'Simonetta' !important;
+}
+
+body {
+    font-size: 17px;
+    background-color: #fdfdfd;
+}
+
+.home-page-text {
+    font-size: 19px;
+}
+
+.full-width { /* This is for full-width images only (class used in image_formats.py) */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+}
+
+.left { /* This is for left-aligning images only (class used in image_formats.py) */
+    display: block;
+    margin-right: auto;
+    max-width: 400px;
+}
+
+.right { /* This is for right-aligning images only (class used in image_formats.py) */
+    display: block;
+    margin-left: auto;
+    max-width: 400px;
+}
+
+.center { /* This is for centering images only (class used in image_formats.py) */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+}
+
+.float-left { /* This is for left floating images only (class used in image_formats.py) */
+    float: left;
+    max-width: 400px;
+}
+
+.float-right { /* This is for right floating images only (class used in image_formats.py) */
+    float: right;
+    max-width: 400px;
+}
+
+.img-responsive {
+    width: 100%;
+    height: auto;
+}
+
+#doodles {
+    width: 50%;
+}
+
+#flowers {
+    width: 50%;
+    box-shadow: 0 10px 10px rgb(50,50,50);
+}
+
+.no-style, .no-style:hover {
+    text-decoration: none;
+    color: black;
+}
+
+/*---------- Blog Header ----------*/
+
+header {
+    height: 200px;
+    background-image: url('../images/header5.jpg');
+    background-repeat: no-repeat;
+    padding-bottom: 15px;
+    box-shadow: 0 16px 48px #E3E7EB;
+    padding-top: 10px;
+}
+
+.flex-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 190px;
+}
+
+.logo {
+    box-shadow: 0 0 10px 10px white;
+    height: 110px;
+}
+
+.logo img {
+    height: 110px;
+    width: auto;
+}
+
+.menu {
+    background-color: rgb(193, 222, 227);
+}
+
+.menu-item {
+    display: inline;
+    padding: 5px;
+    list-style: none;
+    font-size: 25px;
+    color: black;
+    text-decoration: none;
+}
+
+.menu-item:hover {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(0,40,110);
+}
+
+/*---------- About Me Image ----------*/
+
+.about-me-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-me-img img {
+    width: 100%;
+    border-radius: 50%;
+    max-width: 200px;
+}
+
+/*---------- Main Flex Container ----------*/
+
+.main-flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    margin-top: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/*---------- Flex Containers for Posts and Sidebar ---------- */
+
+.flex-container-posts, .flex-container-sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-container-posts {
+    width: 67%;
+    margin-left: 0;
+}
+
+.flex-container-sidebar {
+    width: 28%;
+    margin-right: 0;
+}
+
+/*---------- Flex Cards for Posts ----------*/
+
+.flex-card-post {
+    margin-top: 10px;
+    margin-right: 5px;
+    width: 100%;
+    box-shadow: 0 16px 48px #E3E7EB;
+    border: 1px solid rgb(200,200,200);
+    border-radius: 5px;
+}
+
+/*---------- Flex Cards for Sidebar Items ----------*/
+
+.flex-card {
+    margin: 10px;
+    width: 90%;
+    box-shadow: 0 16px 48px #E3E7EB;
+    border: 1px solid rgb(200,200,200);
+    border-radius: 5px;
+}
+
+.facebook-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.group-border {
+    border: 1px solid rgb(200,200,200);
+    padding: 5px 5px 0px 5px;
+    margin: 2px;
+}
+
+/*---------- Flex Card for Comments ----------*/
+
+.flex-comments {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0;
+    padding-bottom: 10px;
+}
+
+/*---------- Flex Card Header and Body ---------- */
+
+.flex-card-header {
+    background: rgb(193, 222, 227);
+    border-radius: 5px 5px 0px 0px;
+    border-bottom: 1px solid rgb(200,200,200);
+    padding: 15px;
+}
+
+.flex-card-body {
+    padding: 15px;
+    font-family: 'Simonetta';
+}
+
+.products-box, .art-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.products-card, .art-choices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(200,200,200);
+    border-radius: 5px;
+    box-shadow: 0 8px 15px #E3E7EB;
+    padding: 5px;
+    margin: 10px;
+}
+
+.product-img {
+    max-width: 225px;
+}
+
+.product-img img {
+    width: 100%;
+}
+
+.views-likes {
+    width: 20px;
+    margin-bottom: 3px;
+    margin-right: 2px;
+}
+
+.buy-button {
+    padding: 10px 15px 10px 15px;
+    border-radius: 7px 7px 7px 7px;
+    font-size: 15px;
+    background: rgb(0,40,110);
+    color: rgb(255,255,255);
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.buy-button:hover {
+    background: rgb(0,20,75);
+}
+
+/*
+.flex-card:hover, .flex-card-post:hover {
+    box-shadow: 0 6px 10px 0 rgb(190,190,190);
+}
+*/
+
+/*---------- Pagination Buttons ----------*/
+
+.page-buttons {
+    margin: 15px;
+}
+
+li.active > a {
+    background-color: rgb(0,40,110) !important;
+    border: 1px solid rgb(0,40,110) !important;
+    color: rgb(255,255,255);
+}
+
+.styled-button {
+    padding: 10px 15px 10px 15px;
+    border-radius: 7px 7px 7px 7px;
+    font-size: 15px;
+    background: rgb(0,40,110);
+    border: 1px solid rgb(0,40,110);
+    color: rgb(255,255,255);
+}
+
+.styled-button:hover {
+    background: rgb(0,20,75);
+}
+
+/*---------- Footer ---------- */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.icons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.icons {
+    border-radius: 5px;
+    max-width: 35px;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.icons:hover {
+    box-shadow: 0 3px 3px 0 rgb(0,20,75);
+}
+
+/*---------- Media Queries ----------*/
+
+
+@media all and (max-width: 1200px) {
+    .logo {
+        box-shadow: 0 0 10px 10px white;
+        height: 90px;
+    }
+
+    .logo img {
+        height: 90px;
+        width: auto;
+    }
+}
+
+@media all and (max-width: 730px) {
+    body {
+        margin: 5px;
+    }
+
+    .logo {
+        box-shadow: 0 0 10px 10px white;
+        height: 50px;
+    }
+
+    .logo img {
+        height: 50px;
+        width: auto;
+    }
+
+    .main-flex-container {
+        margin: 0;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .flex-container-posts, .flex-container-sidebar {
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .flex-card {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .about-me-img img {
+        max-width: 350px;
+        border-radius: 175px;
+    }
+
+    .products-box {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+}
