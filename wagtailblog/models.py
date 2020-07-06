@@ -1,5 +1,8 @@
 from django.db import models
+from django.dispatch import receiver
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.conf import settings
+from django.core.mail import send_mail
 
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -9,6 +12,9 @@ from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.search import index
+
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import (Mail, Attachment, FileContent, FileName, FileType, Disposition)
 
 class HomePage(Page):
     body = RichTextField(blank=True)
@@ -75,3 +81,28 @@ class BlogTagIndexPage(Page):
         context = super().get_context(request)
         context['blogpages'] = blogpages
         return context
+
+class Subscriber(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    conf_num = models.CharField(max_length=15)
+    confirmed = models.BooleanField(default=False)
+
+    @receiver(models.signals.post_save, sender='wagtailblog.Subscriber')
+    def execute_after_save(sender, instance, created, *args, **kwargs):
+        if created:
+            email_message = 'You have a new subscriber for your blog! ' \
+                'To see who it is, click the following link:\n\n' \
+                'https://www.zenstudio413.com/admin/blog/subscriber/ ' \
+                '\n\nDo not respond to this email address. If you wish to reach the webmaster, ' \
+                'forward this email, along with your message, to megan_mccarty@hotmail.com'
+            send_mail(
+                subject='New Subscriber',
+                message=email_message,
+                from_email='admin@zenstudio413.com',
+                recipient_list=[settings.STUDIO413_EMAIL]
+            )
+
+    def __str__(self):
+        return self.email + " (" + ("not " if not self.confirmed else "") + "confirmed)"
