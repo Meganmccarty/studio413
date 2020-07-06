@@ -1,0 +1,35 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block title %}Therapeutic Art Pages{% endblock %}
+
+{% block content %}
+<div class="flex-card-post">
+    <h2 class="flex-card-header"><a class="no-style" href="{% url 'products' %}">Products</a> – Create-It-Yourself Therapeutic Art Pages</h2>
+    <div class="flex-card-body">
+        <div class="products-box">
+            {% for result in data %}
+                {% if result.digital %}
+                    <div class="products-card">
+                        <div class="product-img">
+                            <img src={{result.image}}>
+                        </div>
+                        <p><b>{{result.title}}</b></p>
+                        <div>
+                            {% if result.likes %}
+                                <img class="views-likes" src="{% static 'images/views.png' %}"> {{result.views}}  |
+                                <img class="views-likes" src="{% static 'images/likes.png' %}"> {{result.likes}}  |
+                                ${{result.price}}
+                            {% else %}
+                                <img class="views-likes" src="{% static 'images/views.png' %}"> {{result.views}}  |
+                                ${{result.price}}
+                            {% endif %}
+                        </div>
+                        <a href={{result.url}}><button class="buy-button">Buy now!</button></a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

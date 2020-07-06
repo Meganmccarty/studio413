@@ -1,0 +1,35 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Subscribe{% endblock %}
+
+{% block content %}
+<div class="flex-card-post">
+    <h2 class="flex-card-header">Subscribe to Studio413!</h2>
+    <div class="flex-card-body">
+        {% if email %}
+            {% if action == 'added' %}
+                <p>Success! Your email, {{ email }} has been {{ action }} to the mailing list!</p>
+                <p>Within the next few minutes, a confirmation email should appear your inbox. If you don't see it, be sure to check your spam folder.</p>
+                <p>To prevent any future emails from going to your spam folder, whitelist our email or add it to your contact list!</p>
+            {% elif action == 'confirmed' %}
+                <p>Success! Your email, {{ email }}, has been {{ action }}!</p>
+                <p>You can download your excluse member package by <a href="../../media/newsletter-signup-freebie-booklet.pdf">clicking here</a>.</p>
+            {% elif action == 'unsubscribed' %}
+                <p>We're sorry to see you go! Your email, {{ email }}, has been {{ action }} from the mailing list.</p>
+            {% else %}
+                <p>This action has been denied.</p>
+            {% endif %}
+        {% else %}
+            {% if form %}
+                <p>Please enter your information below.</p>
+                <form method="post">
+                    {{ form }}
+                    {% csrf_token %}
+                    <br>
+                    <button type="submit" class="styled-button">Subscribe!</button>
+                </form>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

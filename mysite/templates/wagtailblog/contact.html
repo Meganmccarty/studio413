@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<div class="flex-card-post">
+    <h2 class="flex-card-header">Contact the Artist!</h2>
+    <div class="flex-card-body">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <button type="submit" class="styled-button">Send Message!</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
