@@ -2,7 +2,21 @@ from wagtail.contrib.modeladmin.options import (
     ModelAdmin,
     modeladmin_register,
 )
-from .models import Subscriber
+from django.contrib import admin
+from .models import BlogPage, Subscriber
+
+def send_notification(modeladmin, request, queryset):
+    for post in queryset:
+        post.send(request)
+
+send_notification.short_description = "Send selected Post(s) to all subscribers"
+
+
+class BlogPageAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author', 'body')
+    search_fields = ['title', 'body']
+    actions = [send_notification]
+admin.site.register(BlogPage, BlogPageAdmin)
 
 class SubscriberAdmin(ModelAdmin):
     """Subscriber admin."""
