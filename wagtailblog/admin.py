@@ -18,6 +18,10 @@ class BlogPageAdmin(admin.ModelAdmin):
     actions = [send_notification]
 admin.site.register(BlogPage, BlogPageAdmin)
 
+class SubscriberAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'email', 'confirmed')
+admin.site.register(Subscriber, SubscriberAdmin)
+
 class SubscriberAdmin(ModelAdmin):
     """Subscriber admin."""
 
