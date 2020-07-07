@@ -34,18 +34,18 @@
         </header></a>
         <nav class="navbar navbar-expand-md navbar-light menu">
             <div class="container-fluid">
-                <span class="navbar-brand"></span>
+                <span class="navbar-brand">Studio413</span>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive2"
                     aria-controls="navbarResponsive2" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive2">
                     <ul class="navbar-nav mr-auto">
-                        <li class="menu-item"><a class="menu-item" href="/">Home</a></li>
-                        <li class="menu-item"><a class="menu-item" href="{% url 'contact' %}">Contact</a></li>
-                        <li class="menu-item"><a class="menu-item" href="{% slugurl 'blog' %}">Blog</a></li>
-                        <li class="menu-item"><a class="menu-item" href="{% url 'products' %}">Products</a></li>
-                        <li class="menu-item"><a class="menu-item" href="https://www.etsy.com/shop/Studio413ArtTherapy">Shop Now!</a></li>
+                        <a class="menu-item" href="/"><li>Home</li></a>
+                        <a class="menu-item" href="{% url 'contact' %}"><li>Contact</li></a>
+                        <a class="menu-item" href="{% slugurl 'blog' %}"><li>Blog</li></a>
+                        <a class="menu-item" href="{% url 'products' %}"><li>Products</li></a>
+                        <a class="menu-item" href="https://www.etsy.com/shop/Studio413ArtTherapy"><li>Shop Now!</li></a>
                     </ul>
                 </div>
             </div>
