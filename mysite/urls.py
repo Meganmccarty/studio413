@@ -25,9 +25,10 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/login/', views.LoginView.as_view(), name='login'),
-    path('accounts/logout/', views.LogoutView.as_view(next_page='/'), name='logout'),
-    path('summernote/', include('django_summernote.urls')),
+    path('', include('allauth.urls')),
+    #path('accounts/login/', views.LoginView.as_view(), name='login'),
+    #path('accounts/logout/', views.LogoutView.as_view(next_page='/'), name='logout'),
+    #path('summernote/', include('django_summernote.urls')),
     path('', include('wagtailblog.urls')),
     re_path(r'^cms/', include(wagtailadmin_urls)),
     re_path(r'^documents/', include(wagtaildocs_urls)),
