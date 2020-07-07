@@ -20,7 +20,7 @@ def products(request):
         result_data['image'] = results['Images'][0]['url_570xN']
         parsed_data.append(result_data)
 
-    return render(request, 'blog/products.html', {'data' : parsed_data})
+    return render(request, 'wagtailblog/products.html', {'data' : parsed_data})
 
 ### Therapeutic Art Pages Subpage
 def art_pages(request):
@@ -38,7 +38,7 @@ def art_pages(request):
         result_data['digital'] = results['is_digital']
         parsed_data.append(result_data)
 
-    return render(request, 'blog/art_pages.html', {'data' : parsed_data})
+    return render(request, 'wagtailblog/art_pages.html', {'data' : parsed_data})
 
 ### Art for Sale Subpage
 def art_for_sale(request):
@@ -56,7 +56,7 @@ def art_for_sale(request):
         result_data['digital'] = results['is_digital']
         parsed_data.append(result_data)
 
-    return render(request, 'blog/art_for_sale.html', {'data' : parsed_data})
+    return render(request, 'wagtailblog/art_for_sale.html', {'data' : parsed_data})
 
 ### Contact Page
 def contact(request):
@@ -73,7 +73,7 @@ def contact(request):
     else:
         form = ContactForm()
 
-    return render(request, 'blog/contact.html', {'form': form})
+    return render(request, 'wagtailblog/contact.html', {'form': form})
 
 ### New Subscriber Page
 # Helper Functions
@@ -103,23 +103,23 @@ def new(request):
                                                     sub.conf_num))
         sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
         response = sg.send(message)
-        return render(request, 'blog/new_subscriber.html', {'email': sub.email, 'action': 'added', 'form': SubscriberForm()})
+        return render(request, 'wagtailblog/new_subscriber.html', {'email': sub.email, 'action': 'added', 'form': SubscriberForm()})
     else:
-        return render(request, 'blog/new_subscriber.html', {'form': SubscriberForm()})
+        return render(request, 'wagtailblog/new_subscriber.html', {'form': SubscriberForm()})
 
 def confirm(request):
     sub = Subscriber.objects.get(email=request.GET['email'])
     if sub.conf_num == request.GET['conf_num']:
         sub.confirmed = True
         sub.save()
-        return render(request, 'blog/new_subscriber.html', {'email': sub.email, 'action': 'confirmed'})
+        return render(request, 'wagtailblog/new_subscriber.html', {'email': sub.email, 'action': 'confirmed'})
     else:
-        return render(request, 'blog/new_subscriber.html', {'email': sub.email, 'action': 'denied'})
+        return render(request, 'wagtailblog/new_subscriber.html', {'email': sub.email, 'action': 'denied'})
 
 def delete(request):
     sub = Subscriber.objects.get(email=request.GET['email'])
     if sub.conf_num == request.GET['conf_num']:
         sub.delete()
-        return render(request, 'blog/new_subscriber.html', {'email': sub.email, 'action': 'unsubscribed'})
+        return render(request, 'wagtailblog/new_subscriber.html', {'email': sub.email, 'action': 'unsubscribed'})
     else:
-        return render(request, 'blog/new_subscriber.html', {'email': sub.email, 'action': 'denied'})
+        return render(request, 'wagtailblog/new_subscriber.html', {'email': sub.email, 'action': 'denied'})
