@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth import get_user_model
 from .models import Subscriber
 
 class SubscriberForm(forms.Form):
@@ -12,13 +13,9 @@ class ContactForm(forms.Form):
     message = forms.CharField(label='Your message', widget=forms.Textarea(attrs={'class': 'form-control'}))
 
 class CustomSignupForm(forms.Form): 
-    first_name = forms.CharField(label='First Name', max_length=30, widget=forms.TextInput(attrs={'class': 'form-control'})) 
-    last_name = forms.CharField(label='Last Name', max_length=30, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    interests = forms.CharField(label='Interests', max_length=200, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    name = forms.CharField(label='Name', max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Full name'}))
 
     def signup(self, request, user): 
-        user.first_name = self.cleaned_data['first_name']
-        user.last_name = self.cleaned_data['last_name']
-        user.interests = self.cleaned_data['interests']
+        user.first_name = self.cleaned_data['name']
         user.save()
         return user 
