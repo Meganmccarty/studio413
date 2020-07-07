@@ -5,12 +5,8 @@
 }
 
 body {
-    font-size: 17px;
-    background-color: #fdfdfd;
-}
-
-.home-page-text {
     font-size: 19px;
+    background-color: #fdfdfd;
 }
 
 .full-width { /* This is for full-width images only (class used in image_formats.py) */
@@ -107,7 +103,10 @@ header {
 
 .menu-item {
     display: inline;
-    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     list-style: none;
     font-size: 25px;
     color: black;
