@@ -101,6 +101,10 @@ header {
     background-color: rgb(193, 222, 227);
 }
 
+.navbar-brand {
+    font-size: 30px;
+}
+
 .menu-item {
     display: inline;
     padding: 5px;
@@ -112,6 +116,7 @@ header {
 
 .menu-item:hover {
     text-decoration: none;
+    font-weight: bold;
     color: white;
     background-color: rgb(0,40,110);
 }
