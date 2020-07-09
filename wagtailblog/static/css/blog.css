@@ -135,6 +135,10 @@ header {
     max-width: 200px;
 }
 
+#about-card-text {
+    text-align: center;
+}
+
 /*---------- Main Flex Container ----------*/
 
 .main-flex-container {

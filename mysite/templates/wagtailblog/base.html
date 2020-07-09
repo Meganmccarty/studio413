@@ -22,74 +22,60 @@
             </script>
     </head>
     <body>
+
+        <!-- Wagtail Userbar-->
         {% if user.is_superuser %}
             {% wagtailuserbar %}
         {% else %}
         {% endif %}
-        <div id="fb-root"></div>
-        
-        <a href="/"><header>
-            <div class="flex-header">
-                <div class="logo">
-                    <img src="{% static 'images/studio413.jpg' %}">
+
+        <!-- Header -->
+        <a href="/">
+            <header>
+                <div class="flex-header">
+                    <div class="logo">
+                        <img src="{% static 'images/studio413.jpg' %}">
+                    </div>
                 </div>
-            </div>
-        </header></a>
-        <nav class="navbar navbar-expand-md navbar-light menu">
-            <div class="container-fluid">
-                <span class="navbar-brand">Studio413</span>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive2"
-                    aria-controls="navbarResponsive2" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive2">
-                    <ul class="navbar-nav mr-auto">
-                        <a class="menu-item" href="/"><li>Home</li></a>
-                        <a class="menu-item" href="{% url 'contact' %}"><li>Contact</li></a>
-                        <a class="menu-item" href="{% slugurl 'blog' %}"><li>Blog</li></a>
-                        <a class="menu-item" href="{% url 'products' %}"><li>Products</li></a>
-                        <a class="menu-item" href="https://www.etsy.com/shop/Studio413ArtTherapy"><li>Shop Now!</li></a>
-                        {% if user.is_authenticated %}
-                            <a class="menu-item" href="{% url 'account_logout' %}"><li>Logout</li></a>
-                        {% else %}
-                            <a class="menu-item" href="{% url 'account_login' %}"><li>Member Login</li></a>
-                            <!--Put link here to special membership page-->
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="main-flex-container">
-            <div class="flex-container-posts">
+            </header>
+        </a>
+
+        <!-- Main Navbar -->
+        {% include "wagtailblog/navbar.html" %}
+
+        <!-- Flex Container (Both Body and Sidebar) -->
+        <main class="main-flex-container">
+
+            <!-- Main Body -->
+            <section class="flex-container-posts">
                 {% block content %}
                 {% endblock %}
-            </div>
-            <div class="flex-container-sidebar">
-                <div class="flex-card">
+            </section>
+
+            <aside class="flex-container-sidebar">
+                <section class="flex-card">
                     <h5 class="flex-card-header">About Studio413</h5>
                     <div class="flex-card-body">
                         <div class="about-me-img">
                             <img src="{% static 'images/artist.jpg' %}">
                         </div>
-                        <center>
-                            <p class="flex-card-text" id="about-card">
-                                Wife, mom, grandma <br>
-                                Obsessed with art <br>
-                                Animal lover <br>
-                                Forever-student of psychology <br>
-                                B movie fan
-                            </p>
-                        </center>
+                        <p id="about-card-text">
+                            Wife, mom, grandma <br>
+                            Obsessed with art <br>
+                            Animal lover <br>
+                            Forever-student of psychology <br>
+                            B movie fan
+                        </p>
                     </div>
-                </div>
-                <div class="flex-card">
+                </section>
+                <section class="flex-card">
                     <h5 class="flex-card-header">Subscribe to Studio413!</h5>
                     <div class="flex-card-body">
                         <p>Want to receive the latest blog updates and freebies? Subscribe to Studio413!</p>
                         <a href="{% url 'new' %}"><button class="styled-button">Sign me up!</button></a>
                     </div>
-                </div>
-                <div class="flex-card">
+                </section>
+                <section class="flex-card">
                     <h5 class="flex-card-header">Shop Studio413 on Etsy!</h5>
                     <div class="flex-card-body">
                         <div class="products-card">
@@ -98,7 +84,7 @@
                         </div>
                         <a href="{% url 'products' %}"><button class="styled-button">More products</button></a>
                     </div>
-                </div>
+                </section>
                 <!--This is the Patreon Card. Once the account is set up, put it here and uncomment this card.-->
                 <!--<div class="flex-card">
                     <h5 class="flex-card-header">Support Us on Patreon!</h5>
@@ -113,12 +99,12 @@
                         <p>[Your sample video will go here.]</p>
                     </div>
                 </div>-->
-                <div class="flex-card">
+                <section class="flex-card">
                     <h5 class="flex-card-header">Follow Us on Twitter!</h5>
                     <div class="flex-card-body">
                         <a class="twitter-timeline" data-height="300" data-theme="light" href="https://twitter.com/ZStudio413?ref_src=twsrc%5Etfw"></a>
                     </div>
-                </div>
+                </section>
                 <!--This Facebook card is now hidden; author no longer wishes to use Facebook as a social media platform-->
                 <!--<div class="flex-card">
                     <h5 class="flex-card-header">Join Our Facebook Group!</h5>
@@ -145,7 +131,7 @@
                     </div>
                 </div>-->
                 <!--This is the Youtube Channel Card. Once we launch the channel, put it here and uncomment this card.-->
-                <div class="flex-card">
+                <section class="flex-card">
                     <h5 class="flex-card-header">Subscribe to Our Youtube Channel!</h5>
                     <div class="flex-card-body">
                         <div class="about-me-img">
@@ -159,7 +145,7 @@
                         data-layout="default" data-count="default"></div>
                         </p>
                     </div>
-                </div>
+                </section>
                 <!--This is the Affiliate Links Card. Once we have some links, add them here and uncomment this card.-->
                 <!--<div class="flex-card">
                     <h5 class="flex-card-header">Affiliate Links</h5>
@@ -167,8 +153,8 @@
                         <p>[Affiliate links will go here]</p>
                     </div>
                 </div>-->
-            </div>
-        </div>
+            </aside>
+        </main>
         <hr>
         <footer>
             <div class="icons-container">
