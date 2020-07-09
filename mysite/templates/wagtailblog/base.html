@@ -1,5 +1,4 @@
 {% load static %}
-{% load wagtailuserbar %}
 {% load wagtailcore_tags %}
 <html>
     <head>
@@ -37,34 +36,8 @@
         <!-- Main Navbar -->
         {% include "wagtailblog/navbar.html" %}
         
-        {% if user.is_authenticated %}
-        <!--<div class="user-bar-container">-->
-            <div class="user-bar-card">
-                <h4 class="user-bar-header">Hello, {{ user.first_name }}!</h4>
-                <div class="user-bar-body">
-                    <a href="{% url 'account_email' %}">
-                        <button class="styled-button">Update Email</button>
-                    </a>
-                    
-                    <!-- Wagtail Userbar-->
-                    {% if user.is_superuser %}
-                        <a href="/cms">
-                            <button class="styled-button">Admin</button>
-                        </a>
-                        {% wagtailuserbar %}
-                    {% else %}
-                    {% endif %}
-
-                    <a href="{% url 'account_logout' %}">
-                        <button class="styled-button">Logout</button>
-                    </a>
-
-
-                </div>
-            </div>
-        <!--</div>-->
-        {% else %}
-        {% endif %}
+        <!-- Userbar -->
+        {% include "wagtailblog/userbar.html" %}
 
         <!-- Flex Container (Both Body and Sidebar) -->
         <main class="main-flex-container">

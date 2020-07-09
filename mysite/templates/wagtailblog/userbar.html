@@ -1,0 +1,35 @@
+{% load wagtailcore_tags %}
+{% load wagtailuserbar %}
+
+{% if user.is_authenticated %}
+
+    <section class="user-bar-card">
+        <h4 class="user-bar-header">Hello, {{ user.first_name }}!</h4>
+        <div class="user-bar-body">
+
+            <a href="{% slugurl 'members-only' %}">
+                <button class="styled-button">Members Only!</button>
+            </a>
+
+            <a href="{% url 'account_email' %}">
+                <button class="styled-button">Update Email</button>
+            </a>
+                    
+            <!-- Wagtail Userbar-->
+            {% if user.is_superuser %}
+                <a href="/cms">
+                    <button class="styled-button">Admin</button>
+                </a>
+                {% wagtailuserbar %}
+            {% else %}
+            {% endif %}
+
+            <a href="{% url 'account_logout' %}">
+                <button class="styled-button">Logout</button>
+            </a>
+
+        </div>
+    </section>
+        
+{% else %}
+{% endif %}
