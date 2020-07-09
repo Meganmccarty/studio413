@@ -48,6 +48,7 @@ STUDIO413_EMAIL = os.getenv("STUDIO413_EMAIL")
 INSTALLED_APPS = [
     #'blog.apps.BlogConfig',
     'wagtailblog',
+    'users',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
@@ -159,7 +160,7 @@ ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_USERNAME_REQUIRED = True
-ACCOUNT_SIGNUP_FORM_CLASS = 'wagtailblog.forms.CustomSignupForm'
+ACCOUNT_FORMS = {'signup' : 'users.forms.CustomSignupForm'}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

@@ -11,16 +11,12 @@
     <div class="flex-card-body">
         <div class="flex-card-text">
           <p>Already have an account? Then please <a href="{{ login_url }}">sign in</a></p>
+          <p>Note: All fields are required</p>
           <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
               {% csrf_token %}
-              {% for field in form.visible_fields %}
-                  <div class="form-group">
-                      {{ field.label_tag }}
-                      {% render_field field class+="form-control" %}
-                  </div>
-              {% endfor %}
+              {{ form.as_p }}
               {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
               {% endif %}
               <button class="styled-button" type="submit">{% trans "Sign Up" %}</button>
           </form>
