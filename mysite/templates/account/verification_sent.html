@@ -1,0 +1,20 @@
+{% extends "wagtailblog/base.html" %}
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block title %}{% trans "Verify your Email Address" %}{% endblock %}
+
+{% block content %}
+{% url 'account_email' as email_url %}
+<div class="flex-card-post">
+    <h3 class="flex-card-header">{% trans "Verify your Email Address" %}</h3>
+    <div class="flex-card-body">
+        <div class="flex-card-text">
+            <p>Thank you for signing up as a member of Studio413!</p>
+            <p>Within the next few minutes, a verification email should appear in your inbox. Please click on the link inside the email to confirm your email address. If you don't see it, be sure to check you spam folder.</p>
+            <p>To prevent any future emails from going to your spam folder, whitelist our email (zenstudio413@gmail.com) or add it to your contact list!</p>
+            <p><strong>Note:</strong> you can also update your <a href="{{ email_url }}">email address</a> anytime!</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
