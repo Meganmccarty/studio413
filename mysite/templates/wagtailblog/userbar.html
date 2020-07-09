@@ -6,7 +6,11 @@
     <section class="user-bar-card">
         <h4 class="user-bar-header">Hello, {{ user.first_name }}!</h4>
         <div class="user-bar-body">
-
+            {% if messages %}                    
+                {% for message in messages %}
+                    <h5><strong>{{message}}</strong></h5>
+                {% endfor %}  
+            {% endif %}
             <a href="{% slugurl 'members-only' %}">
                 <button class="styled-button">Members Only!</button>
             </a>
