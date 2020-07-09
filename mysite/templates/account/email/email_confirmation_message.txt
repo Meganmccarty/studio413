@@ -1,0 +1,13 @@
+{% load account %}
+{% user_display user as user.first_name %}
+{% load i18n %}
+{% autoescape off %}
+Hello, {{ user.first_name }}!
+
+Thank you for signing up for an account on Studio413! We can't wait to share exclusive content with you!
+
+To confirm your email, please click on the following link: {{ activate_url }}
+
+Happy Creating! :)
+
+{% endautoescape %}
