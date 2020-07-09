@@ -22,7 +22,10 @@
             </script>
     </head>
     <body>
-        {% wagtailuserbar %}
+        {% if user.is_superuser %}
+            {% wagtailuserbar %}
+        {% else %}
+        {% endif %}
         <div id="fb-root"></div>
         
         <a href="/"><header>
