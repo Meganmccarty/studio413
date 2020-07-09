@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from allauth.account.forms import SignupForm
+from allauth.account.forms import SignupForm, LoginForm
 
 class CustomSignupForm(SignupForm): 
     first_name = forms.CharField(label='First name', max_length=50, widget=forms.TextInput(attrs={'placeholder': 'First name'}))
@@ -23,3 +23,13 @@ class CustomSignupForm(SignupForm):
         user.last_name = self.cleaned_data['last_name']
         user.save()
         return user
+
+class CustomLoginForm(LoginForm):
+    pass
+
+    def __init__(self, *args, **kwargs):
+        super(CustomLoginForm, self).__init__(*args, **kwargs)
+        for fieldname, field in self.fields.items():
+            field.widget.attrs.update({
+                'placeholder': ''
+            })

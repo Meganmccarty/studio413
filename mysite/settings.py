@@ -160,7 +160,7 @@ ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_USERNAME_REQUIRED = True
-ACCOUNT_FORMS = {'signup' : 'users.forms.CustomSignupForm'}
+ACCOUNT_FORMS = {'signup' : 'users.forms.CustomSignupForm', 'login' : 'users.forms.CustomLoginForm'}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
