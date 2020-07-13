@@ -25,6 +25,7 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path(r'comments/', include('django_comments_xtd.urls')),
     path('', include('allauth.urls')),
     #path('accounts/login/', views.LoginView.as_view(), name='login'),
     #path('accounts/logout/', views.LogoutView.as_view(next_page='/'), name='logout'),
