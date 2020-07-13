@@ -149,7 +149,7 @@ else:
     }
 
 COMMENTS_APP = 'django_comments_xtd'
-OMMENTS_XTD_MAX_THREAD_LEVEL = 3
+COMMENTS_XTD_MAX_THREAD_LEVEL = 3
 COMMENTS_XTD_CONFIRM_MAIL = False
 COMMENTS_XTD_FORM_CLASS = "wagtailblog.forms.MyCommentForm"
 COMMENTS_XTD_FROM_EMAIL = "zenstudio413@gmail.com"
