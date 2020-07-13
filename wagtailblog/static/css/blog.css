@@ -261,16 +261,19 @@ header {
     justify-content: left;
 }
 
-.products-card, .art-choices {
+.products-card, .art-choices, .products-card-aside {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 5px;
+    margin: 10px;
+}
+
+.products-card, .art-choices {
     border: 1px solid rgb(200,200,200);
     border-radius: 5px;
     box-shadow: 0 8px 15px #E3E7EB;
-    padding: 5px;
-    margin: 10px;
 }
 
 .product-img {
