@@ -22,7 +22,7 @@
 						</a>
 					{% endif %}
 					&nbsp;-&nbsp;
-					{{ item.comment.submit_date|localize }}
+					{{ item.comment.submit_date }}
 					&nbsp;&nbsp;
 					<a class="permalink" title="{% trans 'comment permalink' %}"
 						href="{% get_comment_permalink item.comment %}">🔗
@@ -75,8 +75,10 @@
         		{% endif %}
   			{% endif %}
     	</div>
-    	{% if not item.comment.is_removed and item.children %}
-      		{% render_xtdcomment_tree with comments=item.children %}
+		{% if not item.comment.is_removed and item.children %}
+			<div class="container">
+				{% render_xtdcomment_tree with comments=item.children %}
+			</div>
 		{% endif %}
   	</div>
 </div>
