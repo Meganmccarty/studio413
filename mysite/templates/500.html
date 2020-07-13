@@ -3,12 +3,12 @@
 {% block title %}Server Error{% endblock %}
 
 {% block content %}
-<div class="flex-card-post">
+<section class="flex-card-post">
     <h2 class="flex-card-header">500 – Internal Server Error</h2>
-    <div class="flex-card-body">
+    <article class="flex-card-body">
         <p>Oops! An error occurred on our end.</p>
         <p>If the problem persists, contact the <a href="mailto:megan_mccarty@hotmail.com">webmaster</a>.</p>
         <a href="{% url 'home' %}"><button class="styled-button">Back to Home</button></a>
-    </div>
-</div>
+    </article>
+</section>
 {% endblock %}

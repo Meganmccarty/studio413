@@ -3,11 +3,11 @@
 {% block title %}Page Not Found{% endblock %}
 
 {% block content %}
-<div class="flex-card-post">
+<section class="flex-card-post">
     <h2 class="flex-card-header">404 – Page Not Found</h2>
-    <div class="flex-card-body">
+    <article class="flex-card-body">
         <p>Sorry, the page you are looking for doesn't exist! It may have been removed, had its name changed, or is temporarily unavailable.</p>
         <a href="{% url 'home' %}"><button class="styled-button">Back to Home</button></a>
-    </div>
-</div>
+    </article>
+</section>
 {% endblock %}
