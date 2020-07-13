@@ -11,14 +11,6 @@
             crossorigin="anonymous" />
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
         <title>Studio413 – {% block title %}{% endblock %}</title>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164078557-1"></script>
-            <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'UA-164078557-1');
-            </script>
     </head>
     <body>
 
@@ -72,7 +64,7 @@
                 <section class="flex-card">
                     <h5 class="flex-card-header">Subscribe to Studio413!</h5>
                     <div class="flex-card-body">
-                        <p>Want to receive the latest blog updates and freebies? Subscribe to Studio413!</p>
+                        <p>Want to be notified of new blog posts? Subscribe to Studio413!</p>
                         <a href="{% url 'new' %}"><button class="styled-button">Sign me up!</button></a>
                     </div>
                 </section>
@@ -81,21 +73,13 @@
                 <section class="flex-card">
                     <h5 class="flex-card-header">Shop Studio413 on Etsy!</h5>
                     <div class="flex-card-body">
-                        <div class="products-card">
+                        <div class="products-card-aside">
                             <script type='text/javascript' src='https://www.etsy.com/assets/js/etsy_mini_shop.js'></script>
                             <script type='text/javascript'>new Etsy.Mini(21292598,'thumbnail',3,2,0,'https://www.etsy.com');</script>
                         </div>
                         <a href="{% url 'products' %}"><button class="styled-button">More products</button></a>
                     </div>
                 </section>
-
-                <!--This is the Patreon Card. Once the account is set up, put it here and uncomment this card.-->
-                <!--<div class="flex-card">
-                    <h5 class="flex-card-header">Support Us on Patreon!</h5>
-                    <div class="flex-card-body">
-                        <p>[Patreon info/link will go here.]</p>
-                    </div>
-                </div>-->
 
                 <!-- Twitter Card -->
                 <section class="flex-card">
@@ -104,33 +88,6 @@
                         <a class="twitter-timeline" data-height="300" data-theme="light" href="https://twitter.com/ZStudio413?ref_src=twsrc%5Etfw"></a>
                     </div>
                 </section>
-
-                <!--This Facebook card is now hidden; author no longer wishes to use Facebook as a social media platform-->
-                <!--<div class="flex-card">
-                    <h5 class="flex-card-header">Join Our Facebook Group!</h5>
-                    <div class="flex-card-body" id="facebook">
-                        <div class="facebook-container">
-                            <div class="group-border">
-                                <div class="fb-group" data-href="https://www.facebook.com/groups/322580975338340/" data-show-social-context="true"></div>
-                                <center><p><strong>Our public group for all things Studio413!</strong></p></center>
-                            </div>
-                            <div class="group-border">
-                                <div class="fb-group" data-href="https://www.facebook.com/groups/1464669653712807/" data-show-social-context="true"></div>
-                                <center><p><strong>Our private group where you can share your art!</strong></p></center>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
-
-                <!--This is the Instagram Card. However, the current setup is not working. When one that works is found,
-                    put it here and uncomment this card.-->
-                <!--<div class="flex-card">
-                    <h5 class="flex-card-header">Follow Us on Instagram!</h5>
-                    <div class="flex-card-body">
-                        <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-                        <div class="elfsight-app-ffa9fecc-b1a7-494a-b24f-f9b308153674"></div>
-                    </div>
-                </div>-->
 
                 <!-- Youtube Card -->
                 <section class="flex-card">
@@ -149,14 +106,6 @@
                     </div>
                 </section>
 
-                <!--This is the Affiliate Links Card. Once we have some links, add them here and uncomment this card.-->
-                <!--<div class="flex-card">
-                    <h5 class="flex-card-header">Affiliate Links</h5>
-                    <div class="flex-card-body">
-                        <p>[Affiliate links will go here]</p>
-                    </div>
-                </div>-->
-
             </aside>
 
         </main>
@@ -166,11 +115,10 @@
         <footer>
             <div class="icons-container">
                 <a href="https://www.etsy.com/shop/Studio413CreativeArt"><img class="icons" src="{% static 'images/etsy-icon.png' %}"></a>
-                <!--<a href="#"><img class="icons" src="{% static 'images/patreon-icon.png' %}"></a>-->
                 <a href="https://twitter.com/ZStudio413"><img class="icons" src="{% static 'images/twitter-icon.png' %}"></a>
                 <a href="https://www.instagram.com/zenstudio413/"><img class="icons" src="{% static 'images/instagram-icon.png' %}"></a>
-                <!--<a href="https://www.facebook.com/groups/322580975338340/"><img class="icons" src="{% static 'images/facebook-icon.png' %}"></a>-->
                 <a href="https://www.youtube.com/channel/UCE-0ctobYDxR5jjL3UUXwDA"><img class="icons" src="{% static 'images/youtube-icon.png' %}"></a>
+                <a href="https://www.linkedin.com/in/diane-mccarty-1727a97b/"><img class="icons" src="{% static 'images/linkedin-icon.png' %}"></a>
             </div>
             <p>Copyright &copy; 2020 Studio413. All rights reserved.</p>
             <p>Website created by <a href="https://meganmccarty.github.io/portfolio/">Megan McCarty</a></p>
@@ -182,5 +130,13 @@
         <script src="{% static 'js/scripts.js' %}"></script>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=815653788912434&autoLogAppEvents=1"></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164078557-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-164078557-1');
+        </script>
     </body>
 </html>
