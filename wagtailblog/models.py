@@ -14,8 +14,29 @@ from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.search import index
 from wagtail.core.signals import page_published
 
+from django_comments_xtd.models import XtdComment
+
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import (Mail, Attachment, FileContent, FileName, FileType, Disposition)
+
+COMMENTS_APP = getattr(settings, 'COMMENTS_APP', None)
+
+class Comments(XtdComment):
+    XtdComment.panels = [
+        MultiFieldPanel([
+            FieldPanel('user', heading='Username'),
+            FieldPanel('user_name', help_text='User\'s first and last name'),
+            FieldPanel('user_email'),
+            FieldPanel('user_url'),
+        ], heading='User information'),
+        FieldPanel('submit_date'),
+        FieldPanel('comment'),
+        MultiFieldPanel([
+            FieldPanel('is_public'),
+            FieldPanel('is_removed'),
+        ], heading='Moderation'),
+    ]
+
 
 class HomePage(Page):
     body = RichTextField(blank=True)
@@ -76,6 +97,14 @@ class BlogPage(Page):
         ], heading="Blog information"),
         FieldPanel('body'),
     ]
+
+    def get_absolute_url(self):
+        return 'http://127.0.0.1:8000' + self.url
+    
+    def get_context(self, request, *args, **kwargs):
+        context = super(BlogPage, self).get_context(request, *args, **kwargs)
+        context['COMMENTS_APP'] = COMMENTS_APP
+        return context
 
     def send(self, request):
         subscribers = Subscriber.objects.filter(confirmed=True)
