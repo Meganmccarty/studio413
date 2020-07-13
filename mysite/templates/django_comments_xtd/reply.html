@@ -15,10 +15,15 @@
             <div class="media-body">
                 <div class="comment pb-3">
                     <h6 class="mb-1 small">
-                        {{ comment.submit_date|date:"N j, Y, P" }}&nbsp;-&nbsp;
                         {% if comment.user_url %}
-                        <a href="{{ comment.user_url }}" target="_new">{% endif %}
-                            {{ comment.user_name }}{% if comment.user_url %}</a>{% endif %}
+                            <a href="{{ comment.user_url }}" target="_new">
+                        {% endif %}
+                        {{ comment.user.username }}
+                        {% if comment.user_url %}
+                            </a>
+                        {% endif %}
+                        &nbsp;-&nbsp;
+                        {{ comment.submit_date|date:"N j, Y, P" }}
                     </h6>
                     <p>{{ comment.comment }}</p>
                 </div>
