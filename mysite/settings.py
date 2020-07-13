@@ -47,7 +47,12 @@ STUDIO413_EMAIL = os.getenv("STUDIO413_EMAIL")
 
 INSTALLED_APPS = [
     #'blog.apps.BlogConfig',
-    'wagtailblog',
+
+    'django_comments_xtd',
+    'django_comments',
+    'wagtail_comments_xtd',
+
+    'wagtailblog.apps.WagtailblogConfig',
     'users',
 
     'wagtail.contrib.forms',
@@ -62,6 +67,7 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
+    'wagtailfontawesome',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -141,6 +147,18 @@ else:
             'HOST': os.getenv("DATABASE_HOST"),
         }
     }
+
+COMMENTS_APP = 'django_comments_xtd'
+OMMENTS_XTD_MAX_THREAD_LEVEL = 3
+COMMENTS_XTD_CONFIRM_MAIL = False
+COMMENTS_XTD_FORM_CLASS = "wagtailblog.forms.MyCommentForm"
+COMMENTS_XTD_FROM_EMAIL = "zenstudio413@gmail.com"
+COMMENTS_XTD_CONTACT_EMAIL = "zenstudio413@gmail.com"
+
+
+MANAGERS = (
+    ('Admin', 'megan_mccarty@hotmail.com'),
+)
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
