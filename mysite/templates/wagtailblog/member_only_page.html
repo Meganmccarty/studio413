@@ -5,18 +5,18 @@
 {% block title %}Members Only{% endblock %}
 
 {% block content %}
-<div class="flex-card-post">
+<section class="flex-card-post">
     <h3 class="flex-card-header">Membership Goodies!</h3>
-    <div class="flex-card-body">
-        <div class="flex-card-text">
-            {% if user.is_authenticated %}
-                {{ page.body|richtext }}
-            {% else %}
-                <p>Oops, this page (and all of its wonderful goodies) is only available to Studio413 members!</p>
-                <p>If you have an account, you can access this page by <a href="{% url 'account_login' %}">logging in</a>.</p>
-                <p>If you don't have an account, you can <a href="{% url 'account_signup' %}">sign up for free</a>!</p>
-            {% endif %}
-        </div>
-    </div>
-</div>
+    <article class="flex-card-body">
+        
+        {% if user.is_authenticated %}
+            {{ page.body|richtext }}
+        {% else %}
+            <p>Oops, this page (and all of its wonderful goodies) is only available to Studio413 members!</p>
+            <p>If you have an account, you can access this page by <a href="{% url 'account_login' %}">logging in</a>.</p>
+            <p>If you don't have an account, you can <a href="{% url 'account_signup' %}">sign up for free</a>!</p>
+        {% endif %}
+        
+    </article>
+</section>
 {% endblock %}

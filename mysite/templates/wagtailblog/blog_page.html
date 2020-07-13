@@ -8,54 +8,55 @@
 {% block title %}{{ page.title }}{% endblock %}
 
 {% block content %}
-{% load crispy_forms_tags %}
-    <div class="flex-card-post">
-        <h3 class="flex-card-header">{{ page.title }}</h3>
-        <div class="flex-card-body">
-            <p class="text-muted">By {{ page.author }} | Published {{ page.date }}</p>
-            <p>{{ page.body | richtext }}</p>
-            {% if page.tags.all.count %}
-                <div class="tags">
-                    <h3>Tags</h3>
-                    {% for tag in page.tags.all %}
-                        <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button class="styled-button" type="button">#{{ tag }}</button></a>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
-    </div>
-    <div class="flex-card-post">
-        <h3 class="flex-card-header">
-            Comments –
-            {% get_comment_count for page as comment_count %}
-            {{ comment_count }}
-        </h3>
-        <div class="flex-card-body">
-            {% if comment_count %}
-                <div class="comments">
-                    {% render_xtdcomment_tree for page %}
-                </div>
-            {% endif %}
-        </div>
-    </div>
-    <div class="flex-card-post">
-        <h3 class="flex-card-header">Leave a comment</h3>
-        <div class="flex-card-body">
-            {% if user.is_authenticated %}
-                
-                <div class="comment">
-                    <div class="well">
-                        {% render_comment_form for page %}
-                    </div> 
-                </div>
+<section class="flex-card-post">
+    <h2 class="flex-card-header">{{ page.title }}</h2>
+    <article class="flex-card-body">
+        <p class="text-muted">By {{ page.author }} | Published {{ page.date }}</p>
+        <p>{{ page.body | richtext }}</p>
 
-            {% else %}
+        {% if page.tags.all.count %}
+            <section class="tags">
+                <h3>Tags</h3>
+                {% for tag in page.tags.all %}
+                    <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button class="styled-button" type="button">#{{ tag }}</button></a>
+                {% endfor %}
+            </section>
+        {% endif %}
 
-                <div>
-                    <p>You must <a href="{% url 'account_login' %}?next={{request.path}}">log in</a> to leave or respond to a comment.</p>
-                </div>
+    </article>
+</section>
 
-            {% endif %}
-        </div>
+<section class="flex-card-post">
+    <h3 class="flex-card-header">
+        Comments –
+        {% get_comment_count for page as comment_count %}
+        {{ comment_count }}
+    </h3>
+    <div class="flex-card-body">
+        {% if comment_count %}
+            <section class="comments">
+                {% render_xtdcomment_tree for page %}
+            </section>
+        {% endif %}
     </div>
+</section>
+
+<section class="flex-card-post">
+    <h3 class="flex-card-header">Leave a comment</h3>
+    <section class="flex-card-body">
+
+        {% if user.is_authenticated %}
+            <div class="comment">
+                <div class="well">
+                    {% render_comment_form for page %}
+                </div> 
+            </div>
+        {% else %}
+            <div>
+                <p>You must <a href="{% url 'account_login' %}?next={{request.path}}">log in</a> to leave or respond to a comment.</p>
+            </div>
+        {% endif %}
+
+    </section>
+</section>
 {% endblock %}

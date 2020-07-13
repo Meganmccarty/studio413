@@ -4,13 +4,13 @@
 {% block title %}Art for Sale{% endblock %}
 
 {% block content %}
-<div class="flex-card-post">
+<section class="flex-card-post">
     <h2 class="flex-card-header"><a class="no-style" href="{% url 'products' %}">Products</a> – Art for Sale</h2>
     <div class="flex-card-body">
         <div class="products-box">
             {% for result in data %}
                 {% if not result.digital %}
-                    <div class="products-card">
+                    <section class="products-card">
                         <div class="product-img">
                             <img src={{result.image}}>
                         </div>
@@ -26,10 +26,10 @@
                             {% endif %}
                         </div>
                         <a href={{result.url}}><button class="buy-button">Buy now!</button></a>
-                    </div>
+                    </section>
                 {% endif %}
             {% endfor %}
         </div>
     </div>
-</div>
+</section>
 {% endblock %}

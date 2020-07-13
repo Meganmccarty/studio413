@@ -5,12 +5,10 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="flex-card-post">
-    <h3 class="flex-card-header">Welcome to Studio413!</h3>
-    <div class="flex-card-body">
-        <div class="flex-card-text">
-            {{ page.body|richtext }}
-        </div>
-    </div>
-</div>
+<section class="flex-card-post">
+    <h1 class="flex-card-header">Welcome to Studio413!</h1>
+    <article class="flex-card-body">
+        {{ page.body|richtext }}
+    </article>
+</section>
 {% endblock %}

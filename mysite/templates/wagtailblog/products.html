@@ -4,30 +4,30 @@
 {% block title %}Products{% endblock %}
 
 {% block content %}
-<div class="flex-card-post">
+<section class="flex-card-post">
     <h2 class="flex-card-header">Products</h2>
     <div class="flex-card-body">
         <div class="art-box">
             {% for result in data %}
                 {% if result.id == 748364566 %}
-                    <div class="art-choices">
+                    <section class="art-choices">
                         <a class="no-style" href="{% url 'art_pages' %}"><h4>Create-It-Yourself</h4></a>
                         <a class="no-style" href="{% url 'art_pages' %}"><h4>Therapeutic Art Pages</h4></a>
                         <div class="product-img">
                             <a href="{% url 'art_pages' %}"><img src={{result.image}}></a>
                         </div>
-                    </div>
+                    </section>
                 {% elif result.id == 795786998 %}
-                    <div class="art-choices">
+                    <section class="art-choices">
                         <a class="no-style" href="{% url 'art_for_sale' %}"><h4>Art for Sale</h4></a>
                         <br>
                         <div class="product-img">
                             <a href="{% url 'art_for_sale' %}"><img src={{result.image}}></a>
                         </div>
-                    </div>
+                    </section>
                 {% endif %}
             {% endfor %}
         </div>
     </div>
-</div>
+</section>
 {% endblock %}

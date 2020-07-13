@@ -35,17 +35,17 @@
         <main class="main-flex-container">
 
             <!-- Main Body -->
-            <section class="flex-container-posts">
+            <div class="flex-container-posts">
                 {% block content %}
                 {% endblock %}
-            </section>
+            </div>
 
             <!-- Sidebar -->
             <aside class="flex-container-sidebar">
 
                 <!-- About Me Card -->
                 <section class="flex-card">
-                    <h5 class="flex-card-header">About Studio413</h5>
+                    <h3 class="flex-card-header">About Studio413</h3>
                     <div class="flex-card-body">
                         <div class="about-me-img">
                             <img src="{% static 'images/artist.jpg' %}">
@@ -62,7 +62,7 @@
 
                 <!-- Subscribe to Blog Card -->
                 <section class="flex-card">
-                    <h5 class="flex-card-header">Subscribe to Studio413!</h5>
+                    <h3 class="flex-card-header">Subscribe to Studio413!</h3>
                     <div class="flex-card-body">
                         <p>Want to be notified of new blog posts? Subscribe to Studio413!</p>
                         <a href="{% url 'new' %}"><button class="styled-button">Sign me up!</button></a>
@@ -71,7 +71,7 @@
 
                 <!-- Etsy Card -->
                 <section class="flex-card">
-                    <h5 class="flex-card-header">Shop Studio413 on Etsy!</h5>
+                    <h3 class="flex-card-header">Shop Studio413 on Etsy!</h3>
                     <div class="flex-card-body">
                         <div class="products-card-aside">
                             <script type='text/javascript' src='https://www.etsy.com/assets/js/etsy_mini_shop.js'></script>
@@ -83,7 +83,7 @@
 
                 <!-- Twitter Card -->
                 <section class="flex-card">
-                    <h5 class="flex-card-header">Follow Us on Twitter!</h5>
+                    <h3 class="flex-card-header">Follow Us on Twitter!</h3>
                     <div class="flex-card-body">
                         <a class="twitter-timeline" data-height="300" data-theme="light" href="https://twitter.com/ZStudio413?ref_src=twsrc%5Etfw"></a>
                     </div>
@@ -91,7 +91,7 @@
 
                 <!-- Youtube Card -->
                 <section class="flex-card">
-                    <h5 class="flex-card-header">Subscribe to Our Youtube Channel!</h5>
+                    <h3 class="flex-card-header">Subscribe to Our Youtube Channel!</h3>
                     <div class="flex-card-body">
                         <div class="about-me-img">
                             <a href="https://www.youtube.com/channel/UCE-0ctobYDxR5jjL3UUXwDA">

@@ -7,19 +7,19 @@
 {% block content %}
 {% for post in blogpages %}
     {% with post=post.specific %}
-        <div class="flex-card-post">
+        <section class="flex-card-post">
             <h3 class="flex-card-header">{{ post.title }}</h3>
-            <div class="flex-card-body">
+            <article class="flex-card-body">
                 <p class="text-muted small">By {{ post.author }} | Published {{ post.date}} </p>
                 <p class="flex-card-text">{{post.body | richtext | truncatewords_html:75 }}</p>
                 <a href="{% pageurl post %}"><button class="styled-button">Read More &rarr;</button></a>
-            </div>
-        </div>
+            </article>
+        </section>
     {% endwith %}
 {% endfor %}
 
 {% if blogpages.has_other_pages %}
-<div class="page-buttons">
+<section class="page-buttons">
     <nav aria-label="Page navigation container"></nav>
         <ul class="pagination justify-content-center">
             {% if blogpages.has_previous %}
@@ -37,7 +37,7 @@
             {% endif %}
         </ul>
     </nav>
-</div>
+</section>
 {% endif %}
 
 {% endblock %}
