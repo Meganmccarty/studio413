@@ -1,0 +1,15 @@
+{% extends "wagtailblog/base.html" %}
+
+{% if user.is_authenticated %}
+<h2>{{ user.first_name }} {{ user.last_name }}</h2>
+<ul>
+  <li>Username: {{ user.username }}</li>
+  <li>Profile Image: {{ user.profile.profile_image }}</li>
+  <li>Bio: {{ user.profile.bio }}</li>
+</ul>
+
+<form method="post">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    <button type="submit">Save changes</button>
+</form>

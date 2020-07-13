@@ -30,6 +30,7 @@ urlpatterns = [
     #path('accounts/logout/', views.LogoutView.as_view(next_page='/'), name='logout'),
     #path('summernote/', include('django_summernote.urls')),
     path('', include('wagtailblog.urls')),
+    # path('', include('users.urls')), # Cannot get profile to work, commenting out code for now
     re_path(r'^cms/', include(wagtailadmin_urls)),
     re_path(r'^documents/', include(wagtaildocs_urls)),
     re_path(r'', include(wagtail_urls)),
