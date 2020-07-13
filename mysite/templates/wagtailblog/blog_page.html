@@ -22,33 +22,40 @@
                     {% endfor %}
                 </div>
             {% endif %}
+        </div>
+    </div>
+    <div class="flex-card-post">
+        <h3 class="flex-card-header">
+            Comments –
             {% get_comment_count for page as comment_count %}
-            &nbsp;&sdot;&nbsp;
-            {{ comment_count }} comments have been posted.
-
+            {{ comment_count }}
+        </h3>
+        <div class="flex-card-body">
             {% if comment_count %}
-                <hr/>
                 <div class="comments">
                     {% render_xtdcomment_tree for page %}
                 </div>
             {% endif %}
-
+        </div>
+    </div>
+    <div class="flex-card-post">
+        <h3 class="flex-card-header">Leave a comment</h3>
+        <div class="flex-card-body">
             {% if user.is_authenticated %}
-   
-            <div class="comment">
-                <h4 class="text-center">Your comment</h4>
-                <div class="well">
-                    {% render_comment_form for page %}
+                
+                <div class="comment">
+                    <div class="well">
+                        {% render_comment_form for page %}
+                    </div> 
                 </div>
-            </div>
 
             {% else %}
 
-            <div>
-                <p>You must <a href="{% url 'account_login' %}?next={{request.path}}">log in</a> to leave or respond a comment.</p>
-            </div>
+                <div>
+                    <p>You must <a href="{% url 'account_login' %}?next={{request.path}}">log in</a> to leave or respond to a comment.</p>
+                </div>
 
-        {% endif %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}
