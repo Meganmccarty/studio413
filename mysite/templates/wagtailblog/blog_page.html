@@ -1,5 +1,8 @@
 {% extends 'wagtailblog/base.html' %}
 
+{% load comments %}
+{% load comments_xtd %}
+
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block title %}{{ page.title }}{% endblock %}
@@ -19,6 +22,33 @@
                     {% endfor %}
                 </div>
             {% endif %}
+            {% get_comment_count for page as comment_count %}
+            &nbsp;&sdot;&nbsp;
+            {{ comment_count }} comments have been posted.
+
+            {% if comment_count %}
+                <hr/>
+                <div class="comments">
+                    {% render_xtdcomment_tree for page %}
+                </div>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+   
+            <div class="comment">
+                <h4 class="text-center">Your comment</h4>
+                <div class="well">
+                    {% render_comment_form for page %}
+                </div>
+            </div>
+
+            {% else %}
+
+            <div>
+                <p>You must <a href="{% url 'account_login' %}?next={{request.path}}">log in</a> to leave or respond a comment.</p>
+            </div>
+
+        {% endif %}
         </div>
     </div>
 {% endblock %}
