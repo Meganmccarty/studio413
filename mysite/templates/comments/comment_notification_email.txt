@@ -1,0 +1,14 @@
+Hello, Diane!
+
+Someone posted a new comment on your blog post, {{ content_object }}.
+
+The comment was submitted by: {{ comment.user_name }} (username {{ comment.user.username }})
+Their email address is: {{ comment.user_email }}
+
+--- Comment: ---
+{{ comment.comment }}
+
+You can view the comment on your blog by copying and pasting the following URL in your browser:
+
+{{ content_object.get_absolute_url }}
+
