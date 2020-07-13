@@ -27,8 +27,9 @@ class MyCommentForm(XtdCommentForm):
                 continue
             field_obj.widget.attrs.update({'class': 'form-control'})
             if field_name == 'comment':
-                field_obj.widget.attrs['placeholder'] = _('Your comment')
+                field_obj.widget.attrs['placeholder'] = _('Type your comment')
                 field_obj.widget.attrs['style'] = "font-size: 1.1em"
             if field_name == 'url':
+                field_obj.widget.attrs['placeholder'] = _('Website your username links to (optional)')
                 field_obj.help_text = _('Optional')
         self.fields.move_to_end('comment', last=False)
