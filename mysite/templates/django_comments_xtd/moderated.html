@@ -1,0 +1,25 @@
+{% extends "wagtailblog/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Comment requires approval" %}.{% endblock %}
+
+{% block content %}
+<div class="flex-card-post">
+    <h3 class="flex-card-header">{% trans "Comment in moderation" %}</h3>
+    <div class="flex-card-body">
+        <p>
+            {% blocktrans %}
+            Your comment is in moderation. It has to be reviewed before being published. 
+            Thank you for your patience and understanding.
+            {% endblocktrans %}
+        </p>
+        <p>
+            {% with content_object_url=comment.content_object.get_absolute_url content_object_str=comment.content_object %}
+            {% blocktrans %}
+            Go back to: <a href="{{ content_object_url }}">{{ content_object_str }}</a>
+            {% endblocktrans %}
+            {% endwith %}
+        </p>
+    </div>
+</div>
+{% endblock %}

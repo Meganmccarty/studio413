@@ -15,28 +15,12 @@ from wagtail.search import index
 from wagtail.core.signals import page_published
 
 from django_comments_xtd.models import XtdComment
+from django_comments.moderation import CommentModerator
+from django_comments_xtd.moderation import moderator, SpamModerator
+from wagtailblog.badwords import badwords
 
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import (Mail, Attachment, FileContent, FileName, FileType, Disposition)
-
-COMMENTS_APP = getattr(settings, 'COMMENTS_APP', None)
-
-class Comments(XtdComment):
-    XtdComment.panels = [
-        MultiFieldPanel([
-            FieldPanel('user', heading='Username'),
-            FieldPanel('user_name', help_text='User\'s first and last name'),
-            FieldPanel('user_email'),
-            FieldPanel('user_url'),
-        ], heading='User information'),
-        FieldPanel('submit_date'),
-        FieldPanel('comment'),
-        MultiFieldPanel([
-            FieldPanel('is_public'),
-            FieldPanel('is_removed'),
-        ], heading='Moderation'),
-    ]
-
 
 class HomePage(Page):
     body = RichTextField(blank=True)
@@ -176,3 +160,61 @@ class Subscriber(models.Model):
 
     def __str__(self):
         return self.email + " (" + ("not " if not self.confirmed else "") + "confirmed)"
+
+COMMENTS_APP = getattr(settings, 'COMMENTS_APP', None)
+
+class Comments(XtdComment):
+    XtdComment.panels = [
+        MultiFieldPanel([
+            FieldPanel('user', heading='Username'),
+            FieldPanel('user_name', help_text='User\'s first and last name'),
+            FieldPanel('user_email'),
+            FieldPanel('user_url'),
+        ], heading='User information'),
+        FieldPanel('submit_date'),
+        FieldPanel('comment'),
+        MultiFieldPanel([
+            FieldPanel('is_public'),
+            FieldPanel('is_removed'),
+        ], heading='Moderation'),
+    ]
+
+class PostCommentModerator(CommentModerator):
+    email_notification = True
+
+    def moderate(self, comment, content_object, request):
+        # Make a dictionary where the keys are the words of the message and
+        # the values are their relative position in the message.
+        def clean(word):
+            ret = word
+            if word.startswith('.') or word.startswith(','):
+                ret = word[1:]
+            if word.endswith('.') or word.endswith(','):
+                ret = word[:-1]
+            return ret
+
+        lowcase_comment = comment.comment.lower()
+        msg = dict([(clean(w), i)
+                    for i, w in enumerate(lowcase_comment.split())])
+        for badword in badwords:
+            if isinstance(badword, str):
+                if lowcase_comment.find(badword) > -1:
+                    return True
+            else:
+                lastindex = -1
+                for subword in badword:
+                    if subword in msg:
+                        if lastindex > -1:
+                            if msg[subword] == (lastindex + 1):
+                                lastindex = msg[subword]
+                        else:
+                            lastindex = msg[subword]
+                    else:
+                        break
+                if msg.get(badword[-1]) and msg[badword[-1]] == lastindex:
+                    return True
+        return super(PostCommentModerator, self).moderate(comment,
+                                                          content_object,
+                                                          request)
+
+moderator.register(BlogPage, PostCommentModerator)
