@@ -13,41 +13,9 @@ class NotificationMenuItem(ActionMenuItem):
     name = 'email-notification'
     label = "Notify Subscribers of New Post"
 
-    def send(self, request):
-        subscribers = Subscriber.objects.filter(confirmed=True)
-        sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
-        for sub in subscribers:
-            message = Mail(
-                from_email=settings.FROM_EMAIL,
-                to_emails=sub.email,
-                subject="New blog post on Studio413!",
-                html_content=(
-                    '<div style="background-color:rgb(0,40,110);border:10px solid rgb(0,40,110);border-radius:10px">' \
-                    '<div style="background-color:rgb(193,222,227);border:10px solid rgb(193,222,227);border-radius:10px">' \
-                    '<div style="background-color:white;border-radius:10px">' \
-                    '<center><h3>Studio413 has published a new blog post!</h3></center>'\
-                    '<br>' \
-                    '<span style="margin-left:10px">Click the following link to read the new post:</span>' \
-                    '<br>' \
-                    '<span style="margin-left:10px"><a href="{}/{}/">{}</a></span>'\
-                    '<br>' \
-                    '<span style="margin-left:10px">Or, you can copy and paste the following url into your browser:</span>' \
-                    '<br>' \
-                    '<span style="margin-left:10px">{}/{}</span>'\
-                    '<br>' \
-                    '<hr><center>If you no longer wish to receive our blog updates, you can ' \
-                    '<a href="{}/?email={}&conf_num={}">unsubscribe</a>.</center><br></div></div></div>').format(
-                        request.build_absolute_uri('/blog'),
-                        self.slug,
-                        self.title,
-                        request.build_absolute_uri('/blog'),
-                        self.slug,
-                        request.build_absolute_uri('/delete'),
-                        sub.email,
-                        sub.conf_num
-                    )
-                )
-            sg.send(message)
+    def get_url(self, request, context):
+        return 'http://127.0.0.1:8000/admin/wagtailblog/blogpage/'
+        #BlogPage.send('', request)
 
 @hooks.register('register_page_action_menu_item')
 def register_notification_menu_item():

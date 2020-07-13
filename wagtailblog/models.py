@@ -93,20 +93,17 @@ class BlogPage(Page):
                     '<br>' \
                     '<span style="margin-left:10px">Click the following link to read the new post:</span>' \
                     '<br>' \
-                    '<span style="margin-left:10px"><a href="{}/{}/">{}</a></span>'\
+                    '<span style="margin-left:10px"><a href="http://127.0.0.1:8000/blog/{}/">{}</a></span>'\
                     '<br>' \
                     '<span style="margin-left:10px">Or, you can copy and paste the following url into your browser:</span>' \
                     '<br>' \
-                    '<span style="margin-left:10px">{}/{}</span>'\
+                    '<span style="margin-left:10px">http://127.0.0.1:8000/blog/{}</span>'\
                     '<br>' \
                     '<hr><center>If you no longer wish to receive our blog updates, you can ' \
-                    '<a href="{}/?email={}&conf_num={}">unsubscribe</a>.</center><br></div></div></div>').format(
-                        request.build_absolute_uri('/blog'),
+                    '<a href="http://127.0.0.1:8000/delete/?email={}&conf_num={}">unsubscribe</a>.</center><br></div></div></div>').format(
                         self.slug,
                         self.title,
-                        request.build_absolute_uri('/blog'),
                         self.slug,
-                        request.build_absolute_uri('/delete'),
                         sub.email,
                         sub.conf_num
                     )
