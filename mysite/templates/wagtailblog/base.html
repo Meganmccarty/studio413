@@ -73,7 +73,9 @@
                 <section class="flex-card">
                     <h3 class="flex-card-header">Subscribe to Studio413!</h3>
                     <div class="flex-card-body">
-                        <p>Don't want the extra frills of membership but do want to be kept up-to-date about the latest blog posts? Subscribe to Studio413! (You get a freebie for doing so too!)</p>
+                        <p>Are you already a member and want even more Studio413 coming to your inbox?</p>
+                        <p>Or maybe you don't want the extra frills of membership but still want to be kept up-to-date about the latest blog posts?</p>
+                        <p>Either way, subscribing to Studio413 is the option for you! (You get a freebie for doing so too!)</p>
                         <a href="{% url 'new' %}"><button class="styled-button">Sign up!</button></a>
                     </div>
                 </section>
@@ -87,6 +89,22 @@
                             <script type='text/javascript'>new Etsy.Mini(21292598,'thumbnail',3,2,0,'https://www.etsy.com');</script>
                         </div>
                         <a href="{% url 'products' %}"><button class="styled-button">More products</button></a>
+                    </div>
+                </section>
+
+                <!-- Donation Card -->
+                <section class="flex-card">
+                    <h3 class="flex-card-header">Support Us!</h3>
+                    <div class="flex-card-body">
+                        <p>If you enjoy the content shared here on Studio413, consider leaving a donation! Your support helps us cover the costs of art supplies and web hosting.</p>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_donations" />
+                            <input type="hidden" name="business" value="zenstudio413@gmail.com" />
+                            <input type="hidden" name="currency_code" value="USD" />
+                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                            <img alt="" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+                        </form>
+                        <p>(Note: Studio413 is a for-profit organization, so donations are not tax deductible.)</p>
                     </div>
                 </section>
 
