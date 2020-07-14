@@ -106,17 +106,20 @@ class BlogPage(Page):
                     '<br>' \
                     '<span style="margin-left:10px">Click the following link to read the new post:</span>' \
                     '<br>' \
-                    '<span style="margin-left:10px"><a href="http://127.0.0.1:8000/blog/{}/">{}</a></span>'\
+                    '<span style="margin-left:10px"><a href="{}/{}/">{}</a></span>'\
                     '<br>' \
                     '<span style="margin-left:10px">Or, you can copy and paste the following url into your browser:</span>' \
                     '<br>' \
-                    '<span style="margin-left:10px">http://127.0.0.1:8000/blog/{}</span>'\
+                    '<span style="margin-left:10px">{}/{}</span>'\
                     '<br>' \
                     '<hr><center>If you no longer wish to receive our blog updates, you can ' \
-                    '<a href="http://127.0.0.1:8000/delete/?email={}&conf_num={}">unsubscribe</a>.</center><br></div></div></div>').format(
+                    '<a href="{}/?email={}&conf_num={}">unsubscribe</a>.</center><br></div></div></div>').format(
+                        request.build_absolute_uri('/blog'),
                         self.slug,
                         self.title,
+                        request.build_absolute_uri('/blog'),
                         self.slug,
+                        request.build_absolute_uri('/delete'),
                         sub.email,
                         sub.conf_num
                     )
@@ -146,16 +149,30 @@ class Subscriber(models.Model):
     @receiver(models.signals.post_save, sender='wagtailblog.Subscriber')
     def execute_after_save(sender, instance, created, *args, **kwargs):
         if created:
-            email_message = 'You have a new subscriber for your blog! ' \
-                'To see who it is, click the following link:\n\n' \
-                'https://www.zenstudio413.com/admin/blog/subscriber/ ' \
-                '\n\nDo not respond to this email address. If you wish to reach the webmaster, ' \
-                'forward this email, along with your message, to megan_mccarty@hotmail.com'
+            email_message = ('<div style="background-color:rgb(0,40,110);border:10px solid rgb(0,40,110);border-radius:10px">' \
+                    '<div style="background-color:rgb(193,222,227);border:10px solid rgb(193,222,227);border-radius:10px">' \
+                    '<div style="background-color:white;border-radius:10px">' \
+                    '<center><h3>You have a new blog subscriber!</h3></center>'\
+                    '<br>' \
+                    '<span style="margin-left:10px">The subscriber\'s name is: {} {}, and their email is {}</span>' \
+                    '<br>' \
+                    '<span style="margin-left:10px">To see a list of all your subscribers, click on the following link:</span>' \
+                    '<br>' \
+                    '<span style="margin-left:10px"><a href="http://127.0.0.1/cms/wagtailblog/subscriber/">Blog Subscriber Admin</a></span>' \
+                    '<br>' \
+                    '<hr><center>Do not respond to this email address, as it is unmonitored. ' \
+                    'If you wish to reach the webmaster, forward this email, along with your message ' \
+                    'to megan_mccarty@hotmail.com.</center><br></div></div></div>').format(
+                        instance.first_name,
+                        instance.last_name,
+                        instance.email
+                    )
             send_mail(
                 subject='New Subscriber',
-                message=email_message,
+                message=None,
                 from_email='admin@zenstudio413.com',
-                recipient_list=[settings.STUDIO413_EMAIL]
+                recipient_list=['meganmccarty@alumni.purdue.edu'],
+                html_message=email_message
             )
 
     def __str__(self):
