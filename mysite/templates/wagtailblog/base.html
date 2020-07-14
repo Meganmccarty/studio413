@@ -60,12 +60,21 @@
                     </div>
                 </section>
 
+                <!-- Membership Card -->
+                <section class="flex-card">
+                    <h3 class="flex-card-header">Become a Studio413 Member!</h3>
+                    <div class="flex-card-body">
+                        <p>Do you want access to exclusive content and freebies, have the ability to leave comments on blog posts, and be a part of the Studio413 community? (Did we mention it's completely free?) Become a Studio413 member today!</p>
+                        <a href="{% url 'account_signup' %}"><button class="styled-button">Oh yeah, sign me up!</button></a>
+                    </div>
+                </section>
+
                 <!-- Subscribe to Blog Card -->
                 <section class="flex-card">
                     <h3 class="flex-card-header">Subscribe to Studio413!</h3>
                     <div class="flex-card-body">
-                        <p>Want to be notified of new blog posts? Subscribe to Studio413!</p>
-                        <a href="{% url 'new' %}"><button class="styled-button">Sign me up!</button></a>
+                        <p>Don't want the extra frills of membership but do want to be kept up-to-date about the latest blog posts? Subscribe to Studio413! (You get a freebie for doing so too!)</p>
+                        <a href="{% url 'new' %}"><button class="styled-button">Sign up!</button></a>
                     </div>
                 </section>
 
