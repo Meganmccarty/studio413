@@ -17,12 +17,12 @@
 					{% if item.comment.url and not item.comment.is_removed %}
 						<a href="{{ item.comment.url }}" target="_new">
 					{% endif %}
-					{{ item.comment.user.username }}
+					<span class="commenter-info">{{ item.comment.user.username }}</span>
 					{% if item.comment.url %}
 						</a>
 					{% endif %}
 					&nbsp;-&nbsp;
-					{{ item.comment.submit_date }}
+					<span class="commenter-info">{{ item.comment.submit_date }}</span>
 					&nbsp;&nbsp;
 					<a class="permalink" title="{% trans 'comment permalink' %}"
 						href="{% get_comment_permalink item.comment %}">🔗
@@ -71,12 +71,15 @@
 						<span class="text-muted">&bull;</span>
 						&nbsp;&nbsp;
 					{% endif %}
-					<a class="small mutedlink" href="{{ item.comment.get_reply_url }}">{% trans "Reply" %}</a>
+					{% if user.is_authenticated %}
+						<a class="small mutedlink" href="{{ item.comment.get_reply_url }}"><button class="styled-button-small">{% trans "Reply" %}</button></a>
+					{% else %}
+					{% endif%}
         		{% endif %}
   			{% endif %}
     	</div>
 		{% if not item.comment.is_removed and item.children %}
-			<div class="container">
+			<div class="reply-container">
 				{% render_xtdcomment_tree with comments=item.children %}
 			</div>
 		{% endif %}

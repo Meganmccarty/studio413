@@ -50,15 +50,6 @@ body {
     height: auto;
 }
 
-#doodles {
-    width: 50%;
-}
-
-#flowers {
-    width: 50%;
-    box-shadow: 0 10px 10px rgb(50,50,50);
-}
-
 .no-style, .no-style:hover {
     text-decoration: none;
     color: black;
@@ -218,26 +209,8 @@ header {
     border-radius: 5px;
 }
 
-.facebook-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.group-border {
-    border: 1px solid rgb(200,200,200);
-    padding: 5px 5px 0px 5px;
-    margin: 2px;
-}
-
-/*---------- Flex Card for Comments ----------*/
-
-.flex-comments {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 0;
-    padding-bottom: 10px;
+.flex-card .flex-card-body {
+    font-size: 17px;
 }
 
 /*---------- Flex Card Header and Body ---------- */
@@ -253,6 +226,40 @@ header {
     padding: 15px;
     font-family: 'Simonetta';
 }
+
+/*---------- Comments ----------*/
+
+.comment {
+    border: 1px solid rgb(200,200,200);
+    border-radius: 5px;
+    box-shadow: 0 5px 15px #E3E7EB;
+    margin: 10px;
+    padding: 10px;
+}
+
+.commenter-info {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.styled-button-small {
+    padding: 5px 10px 5px 10px;
+    border-radius: 7px 7px 7px 7px;
+    font-size: 15px;
+    background: rgb(0,40,110);
+    border: 1px solid rgb(0,40,110);
+    color: rgb(255,255,255);
+}
+
+.styled-button-small:hover {
+    background: rgb(0,20,75);
+}
+
+.reply-container {
+    padding-left: 30px;
+}
+
+/*---------- Products Cards ----------*/
 
 .products-box, .art-box {
     display: flex;

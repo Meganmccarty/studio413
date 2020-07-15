@@ -18,12 +18,12 @@
                         {% if comment.user_url %}
                             <a href="{{ comment.user_url }}" target="_new">
                         {% endif %}
-                        {{ comment.user.username }}
+                        <span class="commenter-info">{{ comment.user.username }}</span>
                         {% if comment.user_url %}
                             </a>
                         {% endif %}
                         &nbsp;-&nbsp;
-                        {{ comment.submit_date|date:"N j, Y, P" }}
+                        <span class="commenter-info">{{ comment.submit_date|date:"N j, Y, P" }}</span>
                     </h6>
                     <p>{{ comment.comment }}</p>
                 </div>

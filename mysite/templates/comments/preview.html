@@ -25,13 +25,13 @@
                                 <a href="{{ form.cleaned_data.url }}" target="_new">
                             {% endif %}
                                     
-                            {{ user.username }}
+                            <span class="commenter-info">{{ user.username }}</span>
                                 
                             {% if form.cleaned_data.url %}
                                 </a>
                             {% endif %}
                             &nbsp;-&nbsp;
-                            {% now "N j, Y, P" %}
+                            <span class="commenter-info">{% now "N j, Y, P" %}</span>
                         </h6>
                         <p>{{ comment }}</p>
                     </div>
