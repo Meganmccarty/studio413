@@ -12,8 +12,7 @@ Sent by: {{ comment.name }}, {{ comment.submit_date|date:"SHORT_DATE_FORMAT" }}
 -----
 Click on the following link to mute the comments thread. You will no longer receive follow-up notifications:
 
-http://127.0.0.1:8000{{ mute_url }}
+http://www.zenstudio413.com{{ mute_url }}
 
 --
 {% trans "Happy Creating!" %}!
-Studio413

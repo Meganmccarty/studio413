@@ -25,7 +25,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'www.zenstudio413.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = [u'www.zenstudio413.com', '127.0.0.1']
 
 FROM_EMAIL = os.getenv("FROM_EMAIL")
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
@@ -39,8 +39,8 @@ EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("SENDGRID_API_KEY")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 STUDIO413_EMAIL = os.getenv("STUDIO413_EMAIL")
 
 # Application definition
@@ -157,7 +157,7 @@ COMMENTS_XTD_CONTACT_EMAIL = "zenstudio413@gmail.com"
 
 
 MANAGERS = (
-    ('Admin', 'megan_mccarty@hotmail.com'),
+    ('Admin', 'zenstudio413@gmail.com'),
 )
 
 AUTHENTICATION_BACKENDS = [

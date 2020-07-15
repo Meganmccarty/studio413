@@ -94,10 +94,10 @@ def new(request):
             to_emails=sub.email,
             subject='Welcome to Studio413!',
             html_content='<p>Hello {}!</p> <br> <p>Thank you for subscribing to Studio413! \
-                I\'m looking forward to sharing exclusive creative art content with you here!</p> \
-                <p>Before you can receive your exclusive member goodies, please \
+                We look forward to sharing blog updates with you here!</p> \
+                <p>Before you can receive your freebie for signing up, please \
                 <a href="{}?email={}&conf_num={}"> click here to \
-                confirm your registration</a>.</p>'.format(sub.first_name,
+                confirm your registration</a>.</p> <br> <p>Happy Creating! :)</p>'.format(sub.first_name,
                                                     request.build_absolute_uri('/confirm/'),
                                                     sub.email,
                                                     sub.conf_num))

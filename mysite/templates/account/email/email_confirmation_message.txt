@@ -4,7 +4,7 @@
 {% autoescape off %}
 Hello, {{ user.first_name }}!
 
-Thank you for signing up for an account on Studio413! We can't wait to share exclusive content with you!
+Thank you for signing up for membership on Studio413! We can't wait to share exclusive content with you, and we look forward to seeing you on our members-only forums!
 
 To confirm your email, please click on the following link: {{ activate_url }}
 

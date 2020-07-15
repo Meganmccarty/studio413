@@ -14,7 +14,7 @@ class NotificationMenuItem(ActionMenuItem):
     label = "Notify Subscribers of New Post"
 
     def get_url(self, request, context):
-        return 'http://127.0.0.1:8000/admin/wagtailblog/blogpage/'
+        return 'http://www.zenstudio413.com/admin/wagtailblog/blogpage/'
         #BlogPage.send('', request)
 
 @hooks.register('register_page_action_menu_item')

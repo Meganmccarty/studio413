@@ -1,4 +1,4 @@
-Hello, Diane!
+Hello, Diane, from Studio413!
 
 Someone posted a new comment on your blog post, {{ content_object }}.
 

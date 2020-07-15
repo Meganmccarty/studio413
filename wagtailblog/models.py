@@ -83,7 +83,7 @@ class BlogPage(Page):
     ]
 
     def get_absolute_url(self):
-        return 'http://127.0.0.1:8000' + self.url
+        return 'http://www.zenstudio413.com' + self.url
     
     def get_context(self, request, *args, **kwargs):
         context = super(BlogPage, self).get_context(request, *args, **kwargs)
@@ -158,7 +158,7 @@ class Subscriber(models.Model):
                     '<br>' \
                     '<span style="margin-left:10px">To see a list of all your subscribers, click on the following link:</span>' \
                     '<br>' \
-                    '<span style="margin-left:10px"><a href="http://127.0.0.1/cms/wagtailblog/subscriber/">Blog Subscriber Admin</a></span>' \
+                    '<span style="margin-left:10px"><a href="http://www.zenstudio413.com/cms/wagtailblog/subscriber/">Blog Subscriber Admin</a></span>' \
                     '<br>' \
                     '<hr><center>Do not respond to this email address, as it is unmonitored. ' \
                     'If you wish to reach the webmaster, forward this email, along with your message ' \
@@ -171,7 +171,7 @@ class Subscriber(models.Model):
                 subject='New Subscriber',
                 message=None,
                 from_email='admin@zenstudio413.com',
-                recipient_list=['meganmccarty@alumni.purdue.edu'],
+                recipient_list=[settings.STUDIO413_EMAIL],
                 html_message=email_message
             )
 
