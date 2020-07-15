@@ -1,0 +1,15 @@
+{% extends "wagtailblog/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Comment thread muted" %}.{% endblock %}
+
+{% block content %}
+<div class="flex-card-post">
+    <h3 class="flex-card-header">{% trans "Comment thread has been muted" %}</h3>
+    <div class="flex-card-body">
+        <p>
+            {% trans "You will no longer receive email notifications for comments sent to" %} <a href="{{ content_object.get_absolute_url }}">{{ content_object }}</a>
+        </p>
+    </div>
+</div>
+{% endblock %}
