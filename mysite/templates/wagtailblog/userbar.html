@@ -6,19 +6,19 @@
     <section class="user-bar-card">
         <h4 class="user-bar-header">Hello, {{ user.first_name }}!</h4>
         <div class="user-bar-body">
-            {% if messages %}                    
+            {% if messages %}
                 {% for message in messages %}
                     <h5><strong>{{message}}</strong></h5>
-                {% endfor %}  
+                {% endfor %}
             {% endif %}
-            <a href="{% slugurl 'members-only' %}">
+            <a href="{% slugurl 'vip-members-only' %}">
                 <button class="styled-button">Members Only!</button>
             </a>
 
             <a href="{% url 'account_email' %}">
                 <button class="styled-button">Update Email</button>
             </a>
-                    
+
             <!-- Wagtail Userbar-->
             {% if user.is_superuser %}
                 <a href="/cms">
@@ -34,6 +34,6 @@
 
         </div>
     </section>
-        
+
 {% else %}
 {% endif %}
