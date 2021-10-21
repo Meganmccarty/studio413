@@ -9,4 +9,4 @@ db.sqlite3
 .env
 media/
 blog/etsy.py
-wagtail/etsy.py
+wagtailblog/etsy.py
